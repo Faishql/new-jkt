@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   </head>
   <body>
+      <input type="hidden" name="url" id="baseurl" value="{{ baseUrl() }}">
+      <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
     <section >
       
       <div class="container">
@@ -62,13 +64,13 @@
           </div>
           <div class="modal-footer border-top-0">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-secondary">Send</button>
+            <button type="button" class="btn btn-secondary" id="send">Send</button>
           </div>
         </div>
       </div>
     </div>
     
-  
+    <script src="{{ asset('js/myscript.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
   </body>

@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/login', [AuthController::class, 'Login'])->name('loginprocess');
+Route::post('/loginnew', [AuthController::class, 'Login'])->name('loginprocess');
 Route::get('/register', [AuthController::class, 'viewLogin']);
 
 
