@@ -24,7 +24,7 @@ class AuthController extends Controller
      */
     public function viewLogin()
     {
-        return view('login', ['title' => 'Halaman | Login']);
+        return view('register', ['title' => 'Halaman | Login']);
     }
 
     /**
@@ -47,6 +47,7 @@ class AuthController extends Controller
     /**
      * function proceesing register
      * @param Request
+     * @return json data
      */
     public function Register(Request $req)
     {
@@ -60,6 +61,11 @@ class AuthController extends Controller
         return $validate ? response()->json(['pesan' => 'register sukses']) : response()->json(['pesan' => 'register gagal']);
     }
 
+    /**
+     * function create session
+     * @param Request
+     * @return void
+     */
     public function createSession($req, $validate)
     {
         $req->session()->put('username', $validate['name']);
