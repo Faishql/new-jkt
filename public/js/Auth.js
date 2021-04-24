@@ -1,5 +1,6 @@
 const button = document.getElementById('send')
 const url_origin = document.getElementById('baseurl').value
+const token = document.getElementById('token').value
 
 button.addEventListener('click', async () => {
     const response = await login()
@@ -9,7 +10,6 @@ button.addEventListener('click', async () => {
     } else {
         alert('login gagal')
     }
-    
 })
 
 async function login() {
@@ -23,8 +23,6 @@ async function login() {
 }
 
 async function fetchLogin(email, password) {
-    const token = document.getElementById('token').value
-
     const login = await fetch(`${url_origin}/loginnew`, { 
         method : 'POST',
         body : JSON.stringify({ email: email, password: password }),
