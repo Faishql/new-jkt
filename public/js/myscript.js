@@ -1,26 +1,34 @@
 const button = document.getElementById('send')
+const url_origin = document.getElementById('baseurl').value
 
 button.addEventListener('click', async () => {
     const response = await login()
-    console.log(response)
+    if (response.pesan == 'login sukses') {
+        alert('login sukses')
+        window.location.href = `${url_origin}/home`
+    } else {
+        alert('login gagal')
+    }
+    
 })
 
 async function login() {
 
-    const username = document.getElementById('email').value
+    const email = document.getElementById('email').value
     const password = document.getElementById('password').value
 
-    const response = await fetchLogin(username, password)
+    const response = await fetchLogin(email, password)
 
     return response
 }
 
-async function fetchLogin(username, password) {
-    const url_origin = document.getElementById('baseurl')
+async function fetchLogin(email, password) {
+    const token = document.getElementById('token').value
+
     const login = await fetch(`${url_origin}/loginnew`, { 
         method : 'POST',
-        body : { email : username, password : password },
-        headers : { 'Content-Type' : 'application/json' }
+        body : JSON.stringify({ email: email, password: password }),
+        headers : { 'Content-Type': 'application/json', "X-CSRF-Token": token }
     })
     const result = await login.json()
     return result

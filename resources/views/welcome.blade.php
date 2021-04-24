@@ -12,7 +12,7 @@
   </head>
   <body>
       <input type="hidden" name="url" id="baseurl" value="{{ baseUrl() }}">
-      <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+      <input type="hidden" name="token" id="token" value="{{ csrf_token() }}">
     <section >
       
       <div class="container">

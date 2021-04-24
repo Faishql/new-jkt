@@ -35,13 +35,13 @@ class AuthController extends Controller
     {
         $validate = $this->getUser($req->email);
 
-        if ($validate == null) {
+        if ($validate['data'] == null) {
             return response()->json(['pesan' => 'email tidak terdaftar']);
         }
 
-        $this->createSession($req, $validate);
+        $this->createSession($req, $validate['data']);
 
-        return password_verify($req->password, $validate['password']) ? response()->json(['pesan' => 'login sukses']) : response()->json(['pesan' => 'login gagal']);
+        return password_verify($req->password, $validate['data']['password']) ? response()->json(['pesan' => 'login sukses']) : response()->json(['pesan' => 'login gagal']);
     }
     
     /**
@@ -54,7 +54,7 @@ class AuthController extends Controller
         $validate = User::insert([
             'name' => $req->name,
             'email' => $req->email,
-            'password' => $req->password,
+            'password' => bcrypt($req->password),
             'level' => 1
         ]);
 

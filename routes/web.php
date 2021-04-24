@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/loginnew', [AuthController::class, 'Login'])->name('loginprocess');
+Route::post('/loginnew', [AuthController::class, 'Login']);
 Route::get('/register', [AuthController::class, 'viewLogin']);
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index']);
