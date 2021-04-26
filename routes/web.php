@@ -16,7 +16,8 @@ Route::get('/register', [AuthController::class, 'viewLogin']);
 
 Route::prefix('/gabah')->group(function() {
     Route::get('/get', [ZakatController::class, 'getGabah']);
-    Route::post('/add', [ZakatController::class, 'addGabah']);
+    Route::post('/add', [ZakatController::class, 'addGabah'])->name('add');
+    Route::get('/add', [ZakatController::class, 'viewAdd'])->name('add');
     Route::put('/update', [ZakatController::class, 'updateGabah']);
 });
 

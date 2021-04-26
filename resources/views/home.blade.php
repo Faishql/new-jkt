@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('css-home')
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+@endsection
+
 @section('content')
 
     <div class="container-content">
@@ -63,5 +67,5 @@
             </div>
         </div>
     </div>
-    
+
 @endsection

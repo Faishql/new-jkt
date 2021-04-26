@@ -7,13 +7,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class ZakatController extends Controller
-{
+{   
+    /**
+     * @return json data
+     */
     public function getGabah()
     {
         $data = Penerimaan::get();
         return response()->json(['pesan' => 'sukses', 'data' => $data]);
     }
 
+    /**
+     * @return Renderable
+     */
+    public function viewAdd()
+    {
+        return view('add', ['title' => 'Halaman | Tambah Data']);
+    }
+
+    /**
+     * @param Request
+     * @return json data
+     */
     public function addGabah(Request $req)
     {
         $insert = Penerimaan::insert([
