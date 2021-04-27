@@ -1,71 +1,71 @@
 .header {
-  background-color: #1ca7ec;
-  padding-top: 1%;
+    background-color: #1ca7ec;
+    padding-top: 1%;
 }
 .header h2 {
-  color: white;
+    color: white;
 }
 .tabel {
-  margin-top: 8rem;
-  width: 70%;
-  margin-left: 15%;
+    margin-top: 8rem;
+    width: 70%;
+    margin-left: 15%;
 }
 #form {
-  padding-top: 8rem;
-  width: 60%;
-  margin-left: 20%;
+    padding-top: 8rem;
+    width: 60%;
+    margin-left: 20%;
 }
 .wrap {
-  text-align: center;
-  padding: 20px 60px 0;
+    text-align: center;
+    padding: 20px 60px 0;
 }
 .tabble table {
-  width: 100%;
-  text-align: left;
-  width: 60%;
-  margin-left: 20%;
+    width: 100%;
+    text-align: left;
+    width: 60%;
+    margin-left: 20%;
 }
 .wrap {
-  padding: 0;
-  width: 80%;
-  margin-left: 10%;
-  margin-top: 5%;
+    padding: 0;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
 }
 .wrap hr {
-  width: 70%;
-  margin-left: 15%;
+    width: 70%;
+    margin-left: 15%;
 }
 .content table {
-  margin-top: 2%;
-  width: 100%;
-  text-align: center;
-  width: 60%;
-  margin-left: 20%;
-  margin-bottom: 3%;
-  border: solid 1px black;
+    margin-top: 2%;
+    width: 100%;
+    text-align: center;
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom: 3%;
+    border: solid 1px black;
 }
 .content table th {
-  border-right: solid 1px black;
-  border-top: solid 1px black;
-  border-bottom: solid 1px black;
+    border-right: solid 1px black;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
 }
 .content table td {
-  border-right: solid 1px black;
+    border-right: solid 1px black;
 }
 .pot table {
-  width: 59%;
+    width: 59%;
 }
 .pot table th {
-  border-top: solid 1px black;
+    border-top: solid 1px black;
 }
 .tombol {
-  margin-top: 3%;
-  margin-left: 20%;
+    margin-top: 3%;
+    margin-left: 20%;
 }
 .tmbl {
-  width: 30%;
+    width: 30%;
 }
 .biru {
-  background-color: #1ca7ec;
-  color: white;
+    background-color: #1ca7ec;
+    color: white;
 }
