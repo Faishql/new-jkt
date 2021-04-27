@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penerimaan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,11 +12,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    
     public function index()
     {
-        validate();
-        return response()->json(['pesan' => session('username')]);
-        // return view('home');
+        if(validate()) {
+            abort('401', 'login required');
+        }
+
+         return view('home');
     }
     
 }

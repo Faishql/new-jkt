@@ -1,17 +1,17 @@
 const button = document.getElementById('send')
 const url_origin = document.getElementById('baseurl').value
 const token = document.getElementById('token').value
-// const btnreg = document.getElementById('btnreg')
+const btnreg = document.getElementById('btnreg')
 
-// btnreg.addEventListener('click', async () => {
-//     const response = await register()
-//     if (response.pesan == 'register berhasil') {
-//         alert('register berhasil')
-//         window.location.href = `${url_origin}/login`
-//     }else{
-//         alert('register gagal')
-//     }
-// })
+btnreg.addEventListener('click', async () => {
+    const response = await register()
+    if (response.pesan == 'register berhasil') {
+        alert('register berhasil')
+        window.location.href = `${url_origin}/login`
+    }else{
+        alert('register gagal')
+    }
+})
 
 button.addEventListener('click', async () => {
     const response = await login()

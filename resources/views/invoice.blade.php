@@ -14,7 +14,7 @@
         />
 
         <!-- custom css -->
-        <link rel="stylesheet" href="css/invoice.css" />
+        <link rel="stylesheet" href="{{ asset('') }}css/invoice.css" />
 
         <!-- Icon Bootsstap -->
         <link
