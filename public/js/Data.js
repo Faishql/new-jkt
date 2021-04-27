@@ -1,5 +1,23 @@
 const idpenerimaan = 'INV'+makeid(10)
-console.log(idpenerimaan.toUpperCase())
+const url_origin = document.getElementById('baseurl').value
+const token = document.getElementById('token').value
+const addPenerimaan = document.getElementById('add')
+
+addPenerimaan.addEventListener('click', async () => {
+    const berat = document.getElementById('berat').value
+    const bayar = document.getElementById('bayar').value
+
+ 
+    const process = await insertData(`${url_origin}/detail/invoice`, 'post', { 
+        berat: berat, bayar: bayar, kode_penerimaan: idpenerimaan
+    },{
+        'Content-Type' : 'application/json',
+        'X-CSRF-Token' : token
+    })
+
+    process == 'sukses' ? alert('sukses') : alert('gagal')
+
+})
 
 async function gabahGlobal() {
     const data = await getGabah()
@@ -15,12 +33,12 @@ function formatRupiah(angka, prefix){
 
     // tambahkan titik jika yang di input sudah menjadi angka ribuan
     if(ribuan){
-        separator = sisa ? '.' : '';
-        rupiah += separator + ribuan.join('.');
+        separator = sisa ? '.' : ''
+        rupiah += separator + ribuan.join('.')
     }
 
-    rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-    return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+    rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah
+    return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '')
 }
 
 
@@ -45,7 +63,14 @@ function elemen(data, no) {
             </tr>`
 }
 
-gabahGlobal()
+try {
+    document.getElementById('list-data').innerHTML = 'Loading Data ...'
+}finally {
+    setTimeout(function() {
+        gabahGlobal()
+    }, 3000)
+}
+
 
 function makeid(length) {
     var result = []
@@ -73,13 +98,5 @@ async function getGabah() {
     return response
 }
 
-async function postData() {
-    const url = `${url_origin}/postdata`
-    const body = { username, password, email }
-    const process = await fetchData(url, 'post', body, {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': token
-    })
-    return process
-}
+
 

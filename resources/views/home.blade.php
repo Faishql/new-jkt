@@ -38,10 +38,10 @@
                 <form class="w3-container" action="">
                     <div class="w3-section">
                         <label><b>Berat</b></label>
-                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="berat" required>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" id="berat" name="berat" required>
                         <label><b>Bayar</b></label>
-                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" name="bayar" required>
-                        <button class="button" type="button">Input</button>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" id="bayar" name="bayar" required>
+                        <button class="button" type="button" id="add">Input</button>
                         <button onclick="document.getElementById('id01').style.display='none'" type="button"
                             class="button-cancel">Cancel</button>
                     </div>

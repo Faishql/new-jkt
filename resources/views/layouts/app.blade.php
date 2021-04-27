@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 <body>
+    <input type="hidden" name="url" id="baseurl" value="{{ baseUrl() }}">
+    <input type="hidden" name="token" id="token" value="{{ csrf_token() }}">
+    
     <div class="container">
         <div class="container-nav">
             <ul>
