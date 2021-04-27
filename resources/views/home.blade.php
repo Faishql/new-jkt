@@ -2,12 +2,15 @@
 
 @section('css-home')
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection
 
 @section('content')
     <div class="container-content">
         <div class="content-header">
             <h2>LIST GABAH</h2>
+            <a href="#add"><button id="modal" onClick="getmodal('${data.kode_penerimaan}')"
+                class="button" value="${data.kode_penerimaan}">Tambah</button></a>
         </div>
 
         <table>
@@ -37,6 +40,7 @@
 
                 <form class="w3-container" action="">
                     <div class="w3-section">
+                        <input type="hidden" id="kode">
                         <label><b>Berat</b></label>
                         <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" id="berat" name="berat" required>
                         <label><b>Bayar</b></label>
@@ -49,5 +53,7 @@
             </div>
         </div>
     </div>
+
+<!-- Add font awesome icons to buttons (note that the fa-spin class rotates the icon) -->
 
 @endsection

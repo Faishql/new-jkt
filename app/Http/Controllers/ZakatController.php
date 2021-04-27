@@ -3,28 +3,56 @@
 namespace App\Http\Controllers;
 
 use App\Models\Detail;
+use App\Models\Kering;
 use App\Models\Penerimaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class ZakatController extends Controller
 {   
+    /**
+     * get data detail gabah
+     * @return json data detail
+     */
+    public function getChart($id)
+    {
+        $data = Detail::where('id',$id)->get();
+        return response()->json(['pesan' => 'success', 'data' => $data]);
+    }
 
+    /**
+     * get data gabah kering 
+     * @return json data gabah kering
+     */
+    public function getGabahk()
+    {
+        $data = Kering::get();
+        return response()->json(['pesan' => 'success', 'data' => $data]);
+    }
+
+
+    /**
+     * add data detail gabah
+     * @param Request
+     * @return json data
+     */
     public function addChart(Request $req)
     {
         $insert = Detail::insert([
             'kode_penerimaan' => $req->kode_penerimaan,
-            'tanggal' => now(),
             'berat' => $req->berat,
             'potongan' => 5,
-            'potongan_zak' => 0.5,
+            'potongan_zak' => 0.05,
             'berat_total' => $req->berat,
             'bayar' => $req->bayar,
             'tgl_data' => now()
         ]);
 
-        $insert ? response()->json('sukses') : response()->json('gagal');
+        if ($insert) {
+            return response()->json('sukses');
+        } return response()->json('gagal');
     }
+
     /**
      * @return json data
      */

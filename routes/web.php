@@ -20,6 +20,7 @@ Route::prefix('/gabah')->group(function() {
     Route::get('/add', [ZakatController::class, 'viewAdd']);
     Route::post('/update', [ZakatController::class, 'updateGabah']);
     Route::get('/kering', [ZakatController::class, 'getGkering']);
+    Route::get('/kering/data', [ZakatController::class, 'getGabahk']);
 });
 
 Route::prefix('/detail')->group(function() {

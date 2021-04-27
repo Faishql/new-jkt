@@ -53,7 +53,12 @@ body {
 }
 
 /* CONTENT */
-
+.content-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 120px 0 20px;
+}
 .container-content {
     width: auto;
     height: auto;
@@ -72,14 +77,14 @@ table {
 }
 th,
 td {
-    text-align: left;
+    text-align: center;
     padding: 8px;
     margin-bottom: 100px;
 }
 button {
     background-color: #fff;
     border: none;
-    padding: 8px 12px;
+    padding: 2px 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
