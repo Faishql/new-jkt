@@ -13,7 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        validate();
+        return response()->json(['pesan' => session('username')]);
+        // return view('home');
     }
     
 }

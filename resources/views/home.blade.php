@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+    {{ session('username') }}
     <div class="container-content">
         <div class="content-header">
             <h2>LIST GABAH</h2>

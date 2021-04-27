@@ -72,5 +72,17 @@ class AuthController extends Controller
         $req->session()->put('email', $validate['email']);
         $req->session()->put('user_id', $validate['id']);
     }
+    /**
+     * @return redirect
+     */
+    public function Logout()
+    {
+        if (session()->has('username')) {
+            session()->pull('username');
+            session()->pull('email');
+            session()->pull('user_id');
+        }
+        return redirect('/');
+    }
     
 }

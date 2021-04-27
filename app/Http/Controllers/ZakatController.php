@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Http;
 
 class ZakatController extends Controller
 {   
+    public function __construct()
+    {
+        $session = session('username');
+        if(isset($session)) {
+            return response()->json(['pesan' => session('username')]);
+            exit();
+        }
+    }
     /**
      * @return json data
      */
