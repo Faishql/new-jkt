@@ -99,7 +99,7 @@ class ZakatController extends Controller
             'tanggal' => now(),
             'berat_kotor' => 0,
             'total_potongan' => 5,
-            'total_pot_zakat' => 0,
+            'total_pot_zak' => 0,
             'total_berat' => 0,
             'total_bayar' => 0,
             'tgl_data' => now()

@@ -13,7 +13,7 @@
 <body>
     <input type="hidden" name="url" id="baseurl" value="{{ baseUrl() }}">
     <input type="hidden" name="token" id="token" value="{{ csrf_token() }}">
-    
+
     <div class="container">
         <div class="container-nav">
             <ul>
@@ -29,8 +29,6 @@
             </ul>
         </div>
     @yield('content')
-
-    <script src="{{ asset('js/Data.js') }}"></script>
 
 </body>
 </html>

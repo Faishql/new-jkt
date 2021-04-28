@@ -1,17 +1,43 @@
-const idpenerimaan = 'INV' + makeid(14)
+const idpenerimaan = 'INV' + makeid(12)
 const url_origin = document.getElementById('baseurl').value
 const token = document.getElementById('token').value
 const addPenerimaan = document.getElementById('add')
+const add = document.getElementById('global')
+
+add.addEventListener('click', async () => {
+    const nama_gabah = document.getElementById('nama').value
+    const kode = idpenerimaan.toUpperCase()
+
+    try {
+        add.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
+        await insertData(`${url_origin}/gabah/add`, 'POST', { nama: nama_gabah, kode: kode }, { 
+            'Content-Type': 'application/json',
+            'X-CSRF-Token' : token
+        })
+    } catch (error) {
+        add.innerHTML = 'error'
+        setTimeout(() => {
+            add.innerHTML = 'input'
+        }, 5000)
+    } finally {
+        await gabahGlobal()
+        add.innerHTML = 'success'
+        setTimeout(() => {
+            add.innerHTML = 'input'
+        }, 2000)
+        document.getElementById('nama').value = ''
+    }
+})
 
 addPenerimaan.addEventListener('click', async () => {
     const berat = document.getElementById('berat').value
     const bayar = document.getElementById('bayar').value
-    const kode = document.getElementById('kode').value
+    const id = document.getElementById('kodepenerimaan').value
 
     try {
         addPenerimaan.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
-        const process = await insertData(`${url_origin}/detail/invoice`, 'POST', {
-            berat: berat, bayar: bayar, kode_penerimaan: idpenerimaan
+        await insertData(`${url_origin}/detail/invoice`, 'POST', {
+            berat: berat, bayar: bayar, kode_penerimaan: id
         }, {
             'Content-Type': 'application/json',
             'X-CSRF-Token': token
@@ -20,7 +46,7 @@ addPenerimaan.addEventListener('click', async () => {
         addPenerimaan.innerHTML = 'error'
         setTimeout(() => {
             addPenerimaan.innerHTML = 'input'
-        }, 500)
+        }, 5000)
     }finally{
         addPenerimaan.innerHTML = 'success'
         setTimeout(() => {
@@ -32,9 +58,9 @@ addPenerimaan.addEventListener('click', async () => {
 })
 
 function clearForm() {
-    const berat = document.getElementById('berat').value = ''
-    const bayar = document.getElementById('bayar').value = ''
-    const kode = document.getElementById('kode').value = ''
+    document.getElementById('berat').value = ''
+    document.getElementById('bayar').value = ''
+    document.getElementById('kode').value = ''
 }
 
 async function gabahGlobal() {
@@ -74,10 +100,10 @@ function elemen(data, no) {
                 <td>${data.total_berat}</td>
                 <td>${formatRupiah(data.total_bayar.toString(), 'Rp.')}</td>
                 <td>
-                    <a href="#add"><button id="modal" onClick="getmodal('${data.kode_penerimaan}')"
+                    <a><button id="modal" onClick="getmodal('${data.kode_penerimaan}')"
                             class="button" value="${data.kode_penerimaan}">Tambah</button></a>
-                    <a href=""><button class="button">Detail</button></a>
-                    <a href=""><button class="button">Detail</button></a>
+                    <a><button class="button">Detail</button></a>
+                    <a><button class="button" onClick="getmodal2('${data.kode_penerimaan}')">kering</button></a>
                 </td>
             </tr>`
 
@@ -85,7 +111,15 @@ function elemen(data, no) {
 
 function getmodal(kode) {
     document.getElementById('id01').style.display = 'block'
-    document.getElementById('kode').value = kode
+    document.getElementById('kodepenerimaan').value = kode
+}
+
+function getmodal2(kode) {
+    document.getElementById('id02').style.display = 'block'
+    document.getElementById('kodepenerimaan').value = kode
+}
+function getmodal3() {
+    document.getElementById('id03').style.display = 'block'
 }
 
 gabahGlobal()
