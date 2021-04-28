@@ -32,12 +32,13 @@ add.addEventListener('click', async () => {
 addPenerimaan.addEventListener('click', async () => {
     const berat = document.getElementById('berat').value
     const bayar = document.getElementById('bayar').value
+    const potongan = document.getElementById('potongan').value
     const id = document.getElementById('kodepenerimaan').value
 
     try {
         addPenerimaan.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
         await insertData(`${url_origin}/detail/invoice`, 'POST', {
-            berat: berat, bayar: bayar, kode_penerimaan: id
+            berat: berat, bayar: bayar, kode_penerimaan: id, pot: potongan
         }, {
             'Content-Type': 'application/json',
             'X-CSRF-Token': token
@@ -102,7 +103,7 @@ function elemen(data, no) {
                 <td>
                     <a><button id="modal" onClick="getmodal('${data.kode_penerimaan}')"
                             class="button" value="${data.kode_penerimaan}">Tambah</button></a>
-                    <a><button class="button">Detail</button></a>
+                    <a><button class="button" onClick="coba()">Detail</button></a>
                     <a><button class="button" onClick="getmodal2('${data.kode_penerimaan}')">kering</button></a>
                 </td>
             </tr>`
@@ -120,6 +121,12 @@ function getmodal2(kode) {
 }
 function getmodal3() {
     document.getElementById('id03').style.display = 'block'
+}
+
+async function getmodal4(kode) {
+    document.getElementById('id04').style.display = 'block'
+    document.getElementById('kode').value = kode
+    await displayDetail()
 }
 
 gabahGlobal()
@@ -150,5 +157,55 @@ async function getGabah() {
     return response
 }
 
+async function coba() {
+    await fetch(`${url_origin}/gabah/update`, {
+        method: 'post',
+        body: JSON.stringify({ kode : 'INVMKPETMVW40E2' }),
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token' : token
+        }
+    }).then(res => res.json()).then(res => console.log(res))
+}
 
+const cetak = document.getElementById('cetak')
+cetak.addEventListener('click', () => {
 
+    const kode = document.getElementById('kode').value
+    cetak.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
+    fetch(`${url_origin}/gabah/update`, {
+        method: 'post',
+        body: JSON.stringify({ kode: kode }),
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token' : token
+        }
+    }).then((res) => {
+        cetak.innerHTML = 'success'
+        setTimeout(() => {
+            window.location.href = `${url_origin}/cetak/${kode}`
+        }, 3000)
+    }).catch(err => console.log(err))
+})
+
+async function getDetail() {
+    const kode = document.getElementById('kode').value
+    const data = await fetch(`${url_origin}/detail/invoice/${kode}`)
+    const res = await data.json()
+    return res
+}
+
+async function displayDetail() {
+    let eleme = ''
+    const data = await getDetail()
+    data.data.forEach(res => eleme += elemendetail(res))
+    document.getElementById('list-detail').innerHTML = eleme
+}
+
+function elemendetail(res) {
+    return `<tr>
+                <td>${res.kode_penerimaan}</td>
+                <td>${res.berat}</td>
+                <td>${res.bayar}</td>
+            </tr>`
+}

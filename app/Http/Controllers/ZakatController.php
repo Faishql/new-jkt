@@ -16,7 +16,7 @@ class ZakatController extends Controller
      */
     public function getChart($id)
     {
-        $data = Detail::where('id',$id)->get();
+        $data = Detail::where('kode_penerimaan',$id)->get();
         return response()->json(['pesan' => 'success', 'data' => $data]);
     }
 
@@ -41,8 +41,8 @@ class ZakatController extends Controller
         $insert = Detail::insert([
             'kode_penerimaan' => $req->kode_penerimaan,
             'berat' => $req->berat,
-            'potongan' => 5,
-            'potongan_zak' => 0.05,
+            'potongan' => $req->pot,
+            'potongan_zak' => 0.5,
             'berat_total' => $req->berat,
             'bayar' => $req->bayar,
             'tgl_data' => now()
@@ -108,5 +108,62 @@ class ZakatController extends Controller
         if ($insert) {
             return response()->json(['pesan' => 'success', 'status' => 200]);
         } return response()->json(['pesan' => 'failed']);
+    }
+
+    public function updateGabah(Request $req)
+    {
+        $dataList = [];
+        $totalkotor = 0;
+        $totalpot = 0;
+        $afterpotongan = 0;
+        $data = Detail::where('kode_penerimaan', $req->kode)->get();
+        $countdata = count($data);
+        $pot = 0.5;
+
+        $no = 1;
+        foreach ($data as $item) {
+            $dataList[] = [
+                'no' => $no++,
+                'berat' => $item['berat'],
+                'potongan' => $item['potongan'],
+                'total' => $this->calculate($item['berat'],$item['potongan'])
+            ];
+            $totalpot += $item['potongan'];
+            $totalkotor += $item['berat'];
+            $afterpotongan += $this->calculate($item['berat'],$item['potongan']);
+        }
+
+        $potonganakhir = $countdata * $pot;
+        $alldata = [
+            'datalist' => $dataList,
+            'total_kotor' => $totalkotor,
+            'afterpotongan' => $afterpotongan,
+            'countdata' => $countdata,
+            'potongan_zak' => $pot,
+            'final_potongan' => $potonganakhir,
+            'total_gabah' => $afterpotongan - $potonganakhir,
+            'bayar' => ($afterpotongan - $potonganakhir) * 4600
+        ];
+
+        $update = Penerimaan::where('kode_penerimaan', $req->kode)->update([
+            'tanggal' => now(),
+            'berat_kotor' => $alldata['totalkotor'],
+            'total_potongan' => $totalpot,
+            'total_pot_zak' => $potonganakhir,
+            'total_berat' => $alldata['afterpotongan'],
+            'total_bayar' => $alldata['bayar'],
+        ]);
+
+        if($update) { 
+            return view('drying',$alldata);
+         }return redirect('/home');
+    }
+
+    public function calculate($berat, $item)
+    {
+        $res1 = $berat * $item/100;
+        $finalres = $berat - $res1;
+
+        return $finalres;
     }
 }

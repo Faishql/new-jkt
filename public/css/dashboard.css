@@ -107,3 +107,25 @@ button {
     background-color: #1ca7ec;
     color: #514f51;
 }
+
+
+/* DETAIL TABLE */
+.detail{
+    padding: 20px;
+}
+.detail-table {
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgb(174, 174, 174);
+}
+.detail-table table {
+    border-collapse: collapse;
+    width: 100%;
+}
+table.detail-table th,
+table.detail-table td {
+    text-align: left;
+    padding: 8px;
+}
+.cetak{
+    margin: 10px 0 20px 10px;
+}

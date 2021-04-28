@@ -45,6 +45,8 @@
                         <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" id="berat" name="berat" required>
                         <label><b>Bayar</b></label>
                         <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" id="bayar" name="berat" required>
+                        <label><b>Potongan</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" id="potongan" name="berat" required>
                         <button class="button" type="button" id="add">Input</button>
                         <button onclick="document.getElementById('id01').style.display='none'" type="button"
                             class="button-cancel">Cancel</button>
@@ -82,12 +84,36 @@
                 <form class="w3-container" action="">
                     <div class="w3-section">
                         <label><b>Nama Gabah</b></label>
-                        <input class="w3-input w3-border w3-margin-bottom" type="text" id="nama" required>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" id="nama" required>
                         <button class="button" type="button" id="global">Input</button>
                         <button onclick="document.getElementById('id03').style.display='none'" type="button"
                             class="button-cancel">Cancel</button>
                     </div>
                 </form>
+            </div>
+        </div>
+        <div id="id04" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+                <div class="w3-center"><br>
+                    <span onclick="document.getElementById('id04').style.display='none'"
+                        class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                </div>
+                <input type="hidden" id="kode" value="">
+                <div class="w3-container">
+                    <table class="detail-table">
+                    <tr>
+                        <th>Kode Penerimaan</th>
+                        <th>Berat</th>
+                        <th>Bayar</th>
+                    </tr>
+                    <tbody id="list-detail">
+                        {{-- content --}}
+                    </tbody>
+                    </table>
+                    <button class="button cetak" type="button" id="cetak">Cetak</button>
+                </div>
+                
             </div>
         </div>
     </div>
