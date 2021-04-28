@@ -1,73 +1,66 @@
-.header {
-    padding-top: 1%;
-}
-.header h2 {
-    color: black;
-}
-.tabel {
+tabel {
     margin-top: 8rem;
     width: 70%;
     margin-left: 15%;
-}
-#form {
+  }
+  #form {
     padding-top: 8rem;
     width: 60%;
     margin-left: 20%;
-}
-.wrap {
+  }
+  .wrap {
     text-align: center;
     padding: 20px 60px 0;
-}
-.container {
-    width: 70%;
-}
-.tabble table {
-    width: 100%;
-    text-align: left;
+    padding: 0;
     width: 60%;
     margin-left: 20%;
-}
-.wrap {
-    padding: 0;
+    margin-top: 5%;
+  }
+  .tabble table {
+    width: 100%;
+    text-align: left;
     width: 80%;
     margin-left: 10%;
-    margin-top: 5%;
-}
-.wrap hr {
+  }
+  .wrap h2 {
+    margin-top: 2%;
+  }
+  .wrap hr {
     width: 70%;
     margin-left: 15%;
-}
-.content table {
+  }
+  .content table {
     margin-top: 2%;
     width: 100%;
     text-align: center;
-    width: 60%;
-    margin-left: 20%;
+    width: 80%;
+    margin-left: 10%;
     margin-bottom: 3%;
     border: solid 1px black;
-}
-.content table th {
+  }
+  .content table th {
     border-right: solid 1px black;
     border-top: solid 1px black;
     border-bottom: solid 1px black;
-}
-.content table td {
+  }
+  .content table td {
     border-right: solid 1px black;
-}
-.pot table {
-    width: 59%;
-}
-.pot table th {
+  }
+  .pot table {
+    width: 80%;
+  }
+  .pot table th {
     border-top: solid 1px black;
-}
-.tombol {
-    margin-top: 3%;
-    margin-left: 20%;
-}
-.tmbl {
-    width: 30%;
-}
-.biru {
-    background-color: #1ca7ec;
-    color: white;
-}
+  }
+  .submengtotal {
+    margin-top: 2%;
+    width: 100%;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 3%;
+  }
+  .tombol {
+      margin-top:2%;
+      margin-left: 25%;
+  }

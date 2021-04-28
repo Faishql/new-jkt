@@ -89,11 +89,20 @@
                             </table>
                         </div>
                     </div>
-                    <div class="row justify-content-center mb-4">
+                    {{-- <div class="row justify-content-center mb-4">
                         <div class="col-md-4">Bayar</div>
                         <div class="col-md-4">{{ $total_gabah }} x 4.600</div>
                         <div class="col-md-4">{{ $bayar }}</div>
-                    </div>
+                    </div> --}}
+                </div>
+                <div class="mengtotal">
+                    <table class="submengtotal">
+                        <tr>
+                            <td style="text-align: left;">Bayar</td>
+                            <td>353.5 x 4.600</td>
+                            <td style="text-align: right;">1.639.900</td>
+                        </tr>
+                    </table>
                 </div>
                 <!-- Akhir total -->
             </div>
