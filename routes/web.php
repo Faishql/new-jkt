@@ -31,4 +31,4 @@ Route::prefix('/detail')->group(function() {
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/logout', [AuthController::class, 'Logout']);
 
-Route::get('/cetak/{kode}', [ZakatController::class, 'cetak']);
+Route::get('/cetak/{kode}', [ZakatController::class, 'updateGabah']);

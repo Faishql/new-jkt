@@ -103,7 +103,7 @@ function elemen(data, no) {
                 <td>
                     <a><button id="modal" onClick="getmodal('${data.kode_penerimaan}')"
                             class="button" value="${data.kode_penerimaan}">Tambah</button></a>
-                    <a><button class="button" onClick="coba()">Detail</button></a>
+                    <a><button class="button" onClick="getmodal4('${data.kode_penerimaan}')">Detail</button></a>
                     <a><button class="button" onClick="getmodal2('${data.kode_penerimaan}')">kering</button></a>
                 </td>
             </tr>`
@@ -181,8 +181,8 @@ cetak.addEventListener('click', () => {
             'X-CSRF-Token' : token
         }
     }).then((res) => {
-        cetak.innerHTML = 'success'
         setTimeout(() => {
+            cetak.innerHTML = 'success'
             window.location.href = `${url_origin}/cetak/${kode}`
         }, 3000)
     }).catch(err => console.log(err))

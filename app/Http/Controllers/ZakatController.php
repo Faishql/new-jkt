@@ -110,6 +110,11 @@ class ZakatController extends Controller
         } return response()->json(['pesan' => 'failed']);
     }
 
+
+    /**
+     * function calculate mastering data
+     * @return Renderable & array
+     */
     public function updateGabah(Request $req)
     {
         $dataList = [];
@@ -128,7 +133,7 @@ class ZakatController extends Controller
                 'potongan' => $item['potongan'],
                 'total' => $this->calculate($item['berat'],$item['potongan'])
             ];
-            $totalpot += $item['potongan'];
+            $totalpot += $this->topot($item['berat'],$item['potongan']);
             $totalkotor += $item['berat'];
             $afterpotongan += $this->calculate($item['berat'],$item['potongan']);
         }
@@ -146,8 +151,7 @@ class ZakatController extends Controller
         ];
 
         $update = Penerimaan::where('kode_penerimaan', $req->kode)->update([
-            'tanggal' => now(),
-            'berat_kotor' => $alldata['totalkotor'],
+            'berat_kotor' => $alldata['total_kotor'],
             'total_potongan' => $totalpot,
             'total_pot_zak' => $potonganakhir,
             'total_berat' => $alldata['afterpotongan'],
@@ -155,7 +159,7 @@ class ZakatController extends Controller
         ]);
 
         if($update) { 
-            return view('drying',$alldata);
+            return view('invoice',$alldata);
          }return redirect('/home');
     }
 
@@ -165,5 +169,10 @@ class ZakatController extends Controller
         $finalres = $berat - $res1;
 
         return $finalres;
+    }
+
+    public function topot($berat, $item)
+    {
+        return $berat * $item/100;
     }
 }

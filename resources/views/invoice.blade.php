@@ -54,47 +54,19 @@
                             <th>Pot (%)</th>
                             <th>Total</th>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>50</td>
-                            <td>1</td>
-                            <td>49,5</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>60</td>
-                            <td>0</td>
-                            <td>60</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>75</td>
-                            <td>2</td>
-                            <td>73,5</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>75</td>
-                            <td>2</td>
-                            <td>73,5</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>50</td>
-                            <td>0</td>
-                            <td>50</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>50</td>
-                            <td>0</td>
-                            <td>50</td>
-                        </tr>
+                        @foreach ($datalist as $item)
+                            <tr>
+                                <td>{{ $item['no'] }}</td>
+                                <td>{{ $item['berat'] }}</td>
+                                <td>{{ $item['potongan'] }}</td>
+                                <td>{{ $item['total'] }}</td>
+                            </tr>
+                        @endforeach
                         <tr>
                             <th></th>
-                            <th>360</th>
+                            <th>{{ $total_kotor }}</th>
                             <th></th>
-                            <th>356,5</th>
+                            <th>{{ $afterpotongan }}</th>
                         </tr>
                     </table>
                 </div>
@@ -107,20 +79,20 @@
                         <div class="col-md-6">
                             <table>
                                 <tr>
-                                    <td>6 x 0.5 Kg</td>
-                                    <td>3</td>
+                                    <td>{{ $countdata }} x 0.5 Kg</td>
+                                    <td>{{ $final_potongan }}</td>
                                 </tr>
                                 <tr>
                                     <th>Total Gabah</th>
-                                    <th>353,5</th>
+                                    <th>{{ $total_gabah }}</th>
                                 </tr>
                             </table>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-4">
                         <div class="col-md-4">Bayar</div>
-                        <div class="col-md-4">353.5 x 4.600</div>
-                        <div class="col-md-4">1.639.900</div>
+                        <div class="col-md-4">{{ $total_gabah }} x 4.600</div>
+                        <div class="col-md-4">{{ $bayar }}</div>
                     </div>
                 </div>
                 <!-- Akhir total -->
