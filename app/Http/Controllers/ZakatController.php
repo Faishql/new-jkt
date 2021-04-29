@@ -124,7 +124,6 @@ class ZakatController extends Controller
         $data = Detail::where('kode_penerimaan', $req->kode)->get();
         $countdata = count($data);
         $pot = 0.5;
-
         $no = 1;
         foreach ($data as $item) {
             $dataList[] = [
@@ -139,7 +138,10 @@ class ZakatController extends Controller
         }
 
         $potonganakhir = $countdata * $pot;
+        $datadiri = $this->getNama($req->kode);
         $alldata = [
+            'nama' => $datadiri['nama_gabah'],
+            'tanggal' => $datadiri['tgl_data'],
             'datalist' => $dataList,
             'total_kotor' => $totalkotor,
             'afterpotongan' => $afterpotongan,
@@ -174,5 +176,10 @@ class ZakatController extends Controller
     public function topot($berat, $item)
     {
         return $berat * $item/100;
+    }
+
+    public function getNama($inv)
+    {
+        return Penerimaan::where('kode_penerimaan', $inv)->first();
     }
 }

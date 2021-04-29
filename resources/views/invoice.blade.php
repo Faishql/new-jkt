@@ -30,11 +30,11 @@
             <div class="tabble">
                 <table>
                     <tr>
-                        <th>Dari</th>
-                        <th>Tgl</th>
+                        <th>Dari : {{ $nama }}</th>
+                        <th>Tgl : {{ date('d-m-Y') }}</th>
                     </tr>
                     <tr>
-                        <th>Nama</th>
+                        <th>Nama : {{ $nama }}</th>
                         <th></th>
                     </tr>
                 </table>
