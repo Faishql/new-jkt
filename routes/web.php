@@ -21,6 +21,7 @@ Route::prefix('/gabah')->group(function() {
     Route::post('/update', [ZakatController::class, 'updateGabah']);
     Route::get('/kering', [ZakatController::class, 'getGkering']);
     Route::get('/kering/data', [ZakatController::class, 'getGabahk']);
+    Route::post('/kering', [ZakatController::class, 'addKering']);
 });
 
 Route::prefix('/detail')->group(function() {

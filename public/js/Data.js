@@ -117,7 +117,7 @@ function getmodal(kode) {
 
 function getmodal2(kode) {
     document.getElementById('id02').style.display = 'block'
-    document.getElementById('kodepenerimaan').value = kode
+    document.getElementById('kodepe').value = kode
 }
 function getmodal3() {
     document.getElementById('id03').style.display = 'block'
@@ -209,3 +209,27 @@ function elemendetail(res) {
                 <td>${res.bayar}</td>
             </tr>`
 }
+
+const kering = document.getElementById('kering')
+
+kering.addEventListener('click', async () => {
+
+    const tgl = document.getElementById('tanggal').value
+    const kode = document.getElementById('kodepe').value
+
+    console.log(kode)
+    console.log(tgl)
+
+    try {
+        kering.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
+        await insertData(`${url_origin}/gabah/kering`, 'POST', { 
+            kode : kode, tgl : tgl
+        }, { 'Content-Type': 'application/json', 'X-CSRF-Token' : token } )
+    } catch (error) {
+        console.log(error)
+        kering.innerHTML = 'error'
+    } finally {
+        kering.innerHTML = 'success'
+    }
+
+})

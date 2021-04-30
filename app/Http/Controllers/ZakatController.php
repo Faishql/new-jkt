@@ -182,4 +182,23 @@ class ZakatController extends Controller
     {
         return Penerimaan::where('kode_penerimaan', $inv)->first();
     }
+
+    public function addKering(Request $req)
+    {
+        $penerimaan = Penerimaan::where('kode_penerimaan', $req->kode)->first();
+        
+        $insert = Kering::insert([
+            'kode_penerimaan' => $req->kode,
+            'nama_gabah' => $penerimaan['nama_gabah'],
+            'tanggal' => $req->tgl,
+            'berat_kotor' => $penerimaan['berat_kotor'],
+            'total_potongan' => $penerimaan['total_potongan'],
+            'total_pot_zak' => $penerimaan['total_pot_zak'],
+            'total_berat' => $penerimaan['total_berat'],
+            'total_bayar' => $penerimaan['total_bayar'],
+            'tgl_data' => $req->tgl
+        ]);
+
+        return $insert == true ? response()->json(['pesan' => 'sukses']) : response()->json(['pesan' => 'gagal']);
+    }
 }

@@ -65,6 +65,7 @@
                 <form class="w3-container" action="">
                     <div class="w3-section">
                         <label><b>Tanggal</b></label>
+                        <input type="hidden" id="kodepe" value="">
                         <input class="w3-input w3-border w3-margin-bottom" type="date" placeholder="" id="tanggal" name="tanggal" required>
                         <button class="button" type="button" id="kering">Input</button>
                         <button onclick="document.getElementById('id02').style.display='none'" type="button"
