@@ -13,12 +13,10 @@
             <th>Id</th>
             <th>Kode Penerimaan</th>
             <th>Nama Gabah</th>
-            <th>Berat Kotor</th>
-            <th>Total Potongan</th>
-            <th>Total pot zak</th>
             <th>Total Berat</th>
             <th>Total Bayar</th>
             <th>Tanggal Data</th>
+            <th>Action</th>
         </tr>
         <tbody id="list-data">
           {{-- content --}}

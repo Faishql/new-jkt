@@ -22,12 +22,10 @@ function element(no, data) {
         <td>${no}</td>
         <td>${data.kode_penerimaan}</td>
         <td>${data.nama_gabah}</td>
-        <td>${data.berat_kotor}</td>
-        <td>${data.total_potongan}</td>
-        <td>${data.total_pot_zakat}</td>
         <td>${data.total_berat}</td>
         <td>${data.total_bayar}</td>
         <td>${data.tgl_data}</td>
+        <td><a><button class="button" onClick="getmodal('${data.kode_penerimaan}')">kering</button></a></td>
     </tr>
     `
 }
