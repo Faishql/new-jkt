@@ -57,7 +57,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 120px 0 20px;
+    margin: 0 220px 0 0;
 }
 .container-content {
     width: auto;
@@ -77,14 +77,14 @@ table {
 }
 th,
 td {
-    text-align: center;
+    text-align: left;
     padding: 8px;
     margin-bottom: 100px;
 }
 button {
     background-color: #fff;
     border: none;
-    padding: 2px 12px;
+    padding: 4px 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -107,7 +107,16 @@ button {
     background-color: #1ca7ec;
     color: #514f51;
 }
-
+.header-button {
+    background-color: white;
+    color: #1ca7ec;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    margin: 10px;
+}
+.header-button:hover{
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    transition: 7000ms;
+}
 
 /* DETAIL TABLE */
 .detail{

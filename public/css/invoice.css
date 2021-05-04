@@ -12,7 +12,7 @@ tabel {
   padding: 0;
   width: 90%;
   margin-left: 5%;
-  margin-top: 2%;
+  margin-top: 2%; 
 }
 .tabble table {
   width: 100%;
@@ -59,6 +59,17 @@ tabel {
   margin-bottom: 3%;
 }
 .tombol {
-  margin-top: 2%;
-  margin-left: 25%;
+  margin-top: 5%;
+  margin-left: 12%;
+}
+@media (min-width: 768px) {
+  .tombol {
+    margin-top: 2%;
+    margin-left: 25%;
+  }
+}
+@media (max-width: 425px) {
+  .wrap {
+    font-size: 10px;
+  }
 }

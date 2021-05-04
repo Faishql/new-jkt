@@ -12,4 +12,9 @@ class LimitController extends Controller
         $now = date('d');
         return count(Penerimaan::whereDay('tgl_data', $now)->get());
     }
+    
+    public function filterData(Request $req)
+    {
+        return response()->json(['data' => Penerimaan::whereBetween('tgl_data', [$req->tgl1, $req->tgl2])->get()]);
+    }
 }

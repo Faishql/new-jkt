@@ -8,15 +8,20 @@
 @section('content')
     <div class="container-content">
         <div class="content-header">
-            <h2>LIST GABAH</h2>
-            <a href="#add"><button id="modal" onClick="getmodal3()" 
-                class="button" value="${data.kode_penerimaan}">Tambah</button></a>
+            <h2>PEMBELIAN GABAH</h2>
+            <div class="header-icons">
+                <a href="#add"><button id="modal" onClick="getmodal3()" 
+                    class="header-button" value="${data.kode_penerimaan}"><img src="{{ asset('assets/plus.svg') }}" alt=""></button></a>
+                <a href="#add"><button id="modal" onClick="getmodal3()" 
+                    class="header-button" value="${data.kode_penerimaan}"><img src="{{ asset('assets/filter.svg') }}" alt=""></button></a>
+            </div>
+            
         </div>
 
         <table>
             <tr>
                 <th>No</th>
-                <th>No Invoice</th>
+                <th>Nama Pengirim</th>
                 <th>Total Berat</th>
                 <th>Total Harga</th>
                 <th>Action</th>
@@ -84,8 +89,10 @@
 
                 <form class="w3-container" action="">
                     <div class="w3-section">
-                        <label><b>Nama Gabah</b></label>
+                        <label><b>Nama Pengirim</b></label>
                         <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" id="nama" required>
+                        <label><b>Harga Gabah</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" id="harga" required>
                         <button class="button" type="button" id="global">Input</button>
                         <button onclick="document.getElementById('id03').style.display='none'" type="button"
                             class="button-cancel">Cancel</button>

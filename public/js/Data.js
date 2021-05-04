@@ -7,10 +7,11 @@ const add = document.getElementById('global')
 add.addEventListener('click', async () => {
     const nama_gabah = document.getElementById('nama').value
     const kode = idpenerimaan.toUpperCase()
+    const bayar = document.getElementById('harga').value
 
     try {
         add.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
-        await insertData(`${url_origin}/gabah/add`, 'POST', { nama: nama_gabah, kode: kode }, { 
+        await insertData(`${url_origin}/gabah/add`, 'POST', { nama: nama_gabah, kode: kode, bayar: bayar }, { 
             'Content-Type': 'application/json',
             'X-CSRF-Token' : token
         })
@@ -98,14 +99,13 @@ function displayData(data) {
 function elemen(data, no) {
     return `<tr>
                 <td>${no}</td>
-                <td>${data.kode_penerimaan}</td>
-                <td>${data.total_berat}</td>
+                <td>${data.nama_gabah}</td>
+                <td>${data.total_berat} kg</td>
                 <td>${formatRupiah(data.total_bayar.toString(), 'Rp.')}</td>
                 <td>
                     <a><button id="modal" onClick="getmodal('${data.kode_penerimaan}')"
-                            class="button" value="${data.kode_penerimaan}">Tambah</button></a>
-                    <a><button class="button" onClick="getmodal4('${data.kode_penerimaan}')">Detail</button></a>
-                    <a><button class="button" onClick="getmodal2('${data.kode_penerimaan}')">kering</button></a>
+                            class="button" value="${data.kode_penerimaan}"><img src="${url_origin}/assets/cart-add.svg"></button></a>
+                    <a><button class="button" onClick="getmodal4('${data.kode_penerimaan}')"><img src="${url_origin}/assets/info.svg"></button></a>
                 </td>
             </tr>`
 

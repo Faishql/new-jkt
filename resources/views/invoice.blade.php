@@ -70,10 +70,10 @@
             <!-- Total -->
             <div class="pot">
                 <div class="row justify-content-center mb-4">
-                    <div class="col-md-6">
+                    <div class="col-4">
                         <p style="text-align: left; margin-left: 70px;">zak</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-8">
                         <table>
                             <tr>
                                 <td>{{ $countdata }} x 0.5 Kg</td>
@@ -104,14 +104,14 @@
 
     <div class="container">
         <div class="row justify-content-center tombol">
-            <div class="col-md-6">
+            <div class="col-6">
                 <!-- Tombol Print -->
                 <button type="button" class="btn btn-primary biru mb-2 tmbl">
                     <i class="bi bi-arrow-counterclockwise"></i> Kembali
                 </button>
                 <!-- Akhir Tombol Print -->
             </div>
-            <div class="col-md-6" id="btn">
+            <div class="col-6" id="btn">
                 <!-- Tombol Print -->
                 <button type="button" class="btn btn-success mb-2 tmbl" id="tombol">
                     <i class="bi bi-printer"></i> Cetak

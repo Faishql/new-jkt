@@ -9,6 +9,8 @@
     @yield('css-add')
     @yield('css-drying')
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 <body>
     <input type="hidden" name="url" id="baseurl" value="{{ baseUrl() }}">
@@ -23,7 +25,7 @@
                         <img src="{{ asset('assets/cart.svg') }}" alt="">
                     </a>
                 </li>
-                <li><a href="#notification"><img src="{{ asset('assets/bell.svg') }}"></a></li>
+                <li><a href="#notification"><img src="{{ asset('assets/time.svg') }}"></a></li>
                 <li><a href="/gabah/kering"><img src="{{ asset('assets/sun.svg') }}"></a></li>
                 <li><a class="add {{ request()->is('gabah/add') ? 'active' : '' }}" href="/gabah/add"><img src="{{ asset('assets/plus.svg') }}"></a></li>
             </ul>
