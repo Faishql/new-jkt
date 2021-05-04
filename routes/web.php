@@ -13,6 +13,7 @@ Route::get('/', function () {
 
 Route::post('/loginnew', [AuthController::class, 'Login']);
 Route::get('/register', [AuthController::class, 'viewLogin']);
+Route::post('/register', [AuthController::class, 'Register']);
 
 Route::prefix('/gabah')->group(function() {
     Route::get('/get', [ZakatController::class, 'getGabah']);
@@ -22,6 +23,7 @@ Route::prefix('/gabah')->group(function() {
     Route::get('/kering', [ZakatController::class, 'getGkering']);
     Route::get('/kering/data', [ZakatController::class, 'getGabahk']);
     Route::post('/kering', [ZakatController::class, 'addKering']);
+    Route::post('/giling', [ZakatController::class, 'addGiling']);
 });
 
 Route::prefix('/detail')->group(function() {

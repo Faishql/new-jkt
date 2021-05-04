@@ -217,9 +217,6 @@ kering.addEventListener('click', async () => {
     const tgl = document.getElementById('tanggal').value
     const kode = document.getElementById('kodepe').value
 
-    console.log(kode)
-    console.log(tgl)
-
     try {
         kering.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
         await insertData(`${url_origin}/gabah/kering`, 'POST', { 
@@ -233,3 +230,22 @@ kering.addEventListener('click', async () => {
     }
 
 })
+
+const selep = document.getElementById('selep')
+
+selep.addEventListener('click', async () => {
+    const kode = document.getElementById('kode').value
+    const tanggal = document.getElementById('tanggal').value
+
+    try {
+        await insertData(`${url_origin}/gabah/giling`, 'post', {
+            kode : kode, tgl : tanggal
+        }, { 'Content-Type': 'application/json', 'X-CSRF-Token' : token })
+    } catch (error) {
+        console.log(error)
+    } finally {
+        
+    }
+})
+
+

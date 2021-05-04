@@ -114,7 +114,6 @@
                     </table>
                     <button class="button cetak" type="button" id="cetak">Cetak</button>
                 </div>
-                
             </div>
         </div>
     </div>

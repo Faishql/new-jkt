@@ -55,7 +55,7 @@ class AuthController extends Controller
             'name' => $req->name,
             'email' => $req->email,
             'password' => bcrypt($req->password),
-            'level' => 1
+            'level' => 2
         ]);
 
         return $validate ? response()->json(['pesan' => 'register sukses']) : response()->json(['pesan' => 'register gagal']);

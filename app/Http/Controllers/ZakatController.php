@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Detail;
+use App\Models\Giling;
 use App\Models\Kering;
 use App\Models\Penerimaan;
 use Illuminate\Http\Request;
@@ -200,5 +201,22 @@ class ZakatController extends Controller
         ]);
 
         return $insert == true ? response()->json(['pesan' => 'sukses']) : response()->json(['pesan' => 'gagal']);
+    }
+
+    public function addGiling(Request $req)
+    {
+        $penerimaan = Kering::where('kode_penerimaan', $req->kode)->first();
+
+        return Giling::insert([
+            'kode_penerimaan' => $req->kode,
+            'nama_gabah' => $penerimaan['nama_gabah'],
+            'tanggal' => $req->tgl,
+            'berat_kotor' => $penerimaan['berat_kotor'],
+            'total_potongan' => $penerimaan['total_potongan'],
+            'total_pot_zak' => $penerimaan['total_pot_zak'],
+            'total_berat' => $penerimaan['total_berat'],
+            'total_bayar' => $penerimaan['total_bayar'],
+            'tgl_data' => $req->tgl
+        ]) ? response()->json(['pesan' => 'sukses']) : response()->json(['pesan' => 'gagal']);
     }
 }
