@@ -50,6 +50,7 @@ addPenerimaan.addEventListener('click', async () => {
         }, 5000)
     }finally{
         addPenerimaan.innerHTML = 'success'
+        await gabahGlobal()
         setTimeout(() => {
             addPenerimaan.innerHTML = 'input'
         }, 2000)
@@ -229,20 +230,4 @@ kering.addEventListener('click', async () => {
         kering.innerHTML = 'success'
     }
 
-})
-
-/** function selep gabah **/
-const selep = document.getElementById('selep')
-
-selep.addEventListener('click', async () => {
-    const kode = document.getElementById('kode').value
-    const tanggal = document.getElementById('tanggal').value
-
-    try {
-        await insertData(`${url_origin}/gabah/giling`, 'post', { kode : kode, tgl : tanggal }, { 'Content-Type': 'application/json', 'X-CSRF-Token' : token })
-    } catch (error) {
-        console.log(error)
-    } finally {
-        
-    }
 })

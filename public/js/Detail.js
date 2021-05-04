@@ -35,3 +35,31 @@ async function get() {
     const result = await process.json()
     return result
 }
+
+const selep = document.getElementById('selep')
+
+selep.addEventListener('click', async () => {
+    const kode = document.getElementById('kodepe').value
+    const tanggal = document.getElementById('tanggal').value
+
+    try {
+        selep.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
+        await fetch(`${url_origin}/gabah/giling`, {
+            method: 'POST',
+            body: JSON.stringify({ kode: kode, tgl: tanggal}),
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': token
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    } finally {
+        selep.innerHTML = 'input'
+    }
+})
+
+function getmodal(kode) {
+    document.getElementById('id02').style.display = 'block'
+    document.getElementById('kodepe').value = kode
+}

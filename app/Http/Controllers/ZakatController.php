@@ -50,7 +50,15 @@ class ZakatController extends Controller
         ]);
 
         if ($insert) {
-            return response()->json('sukses');
+            $p = Penerimaan::where('kode_penerimaan', $req->kode_penerimaan)->first();
+            
+            return Penerimaan::where('kode_penerimaan', $req->kode_penerimaan)->update([
+                'berat_kotor' => $p['berat_kotor'] += $req->berat,
+                'total_berat' => $p['total_berat'] += $req->berat,
+                'total_bayar' => $p['total_bayar'] += $req->berat * $req->bayar,
+                'updated_at' => now()
+            ]) ? response()->json('sukses') : response()->json('gagal');
+            
         } return response()->json('gagal');
     }
 
@@ -63,8 +71,8 @@ class ZakatController extends Controller
             abort('401', 'login required');
         } 
 
-        $data = Penerimaan::get();
-        return response()->json(['pesan' => 'sukses', 'data' => $data]);
+        $data = Penerimaan::whereDay('tgl_data', date('d'))->get();
+        return response()->json(['pesan' => 'sukses', 'data' => $data, 'now' => date('y-m-d')]);
     }
 
     public function getGkering()
@@ -103,7 +111,8 @@ class ZakatController extends Controller
             'total_pot_zak' => 0,
             'total_berat' => 0,
             'total_bayar' => 0,
-            'tgl_data' => now()
+            'tgl_data' => now(),
+            'updated_at' => now()
         ]);
 
         if ($insert) {
@@ -197,7 +206,7 @@ class ZakatController extends Controller
             'total_pot_zak' => $penerimaan['total_pot_zak'],
             'total_berat' => $penerimaan['total_berat'],
             'total_bayar' => $penerimaan['total_bayar'],
-            'tgl_data' => $req->tgl
+            'tgl_data' => now()
         ]);
 
         return $insert == true ? response()->json(['pesan' => 'sukses']) : response()->json(['pesan' => 'gagal']);
@@ -216,7 +225,7 @@ class ZakatController extends Controller
             'total_pot_zak' => $penerimaan['total_pot_zak'],
             'total_berat' => $penerimaan['total_berat'],
             'total_bayar' => $penerimaan['total_bayar'],
-            'tgl_data' => $req->tgl
+            'tgl_data' => now()
         ]) ? response()->json(['pesan' => 'sukses']) : response()->json(['pesan' => 'gagal']);
     }
 }
