@@ -36,13 +36,6 @@ body {
     color: #000;
     text-decoration: none;
 }
-.container-nav li a.add {
-    margin-top: 160px;
-    padding: 15px;
-}
-.container-nav li a.add img {
-    border-radius: 50%;
-}
 .container-nav li a.active {
     background-color: #1ca7ec;
     color: white;
@@ -51,8 +44,14 @@ body {
     background-color: #1ca7ec;
     color: white;
 }
-/* CONTENT */
 
+/* CONTENT */
+.content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 120px 0 0;
+}
 .container-content {
     width: auto;
     height: auto;
