@@ -1,3 +1,4 @@
+// komen
 const idpenerimaan = 'INV' + makeid(12)
 const url_origin = document.getElementById('baseurl').value
 const token = document.getElementById('token').value
