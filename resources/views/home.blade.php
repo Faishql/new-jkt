@@ -12,8 +12,8 @@
             <div class="header-icons">
                 <a href="#add"><button id="modal" onClick="getmodal3()" 
                     class="header-button" value="${data.kode_penerimaan}"><img src="{{ asset('assets/plus.svg') }}" alt=""></button></a>
-                <a href="#add"><button id="modal" onClick="getmodal3()" 
-                    class="header-button" value="${data.kode_penerimaan}"><img src="{{ asset('assets/filter.svg') }}" alt=""></button></a>
+                <a href="#add"><button id="modal" onClick="getmodal2()" 
+                    class="header-button" value="${data.kode_penerimaan}"><img src="{{ asset('assets/controls.svg') }}" alt=""></button></a>
             </div>
             
         </div>
@@ -50,8 +50,6 @@
                         <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" id="berat" name="berat" required>
                         <label><b>Bayar</b></label>
                         <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" id="bayar" name="berat" required>
-                        <label><b>Potongan</b></label>
-                        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="" id="potongan" name="berat" required>
                         <button class="button" type="button" id="add">Input</button>
                         <button onclick="document.getElementById('id01').style.display='none'" type="button"
                             class="button-cancel">Cancel</button>
@@ -69,10 +67,11 @@
 
                 <form class="w3-container" action="">
                     <div class="w3-section">
-                        <label><b>Tanggal</b></label>
-                        <input type="hidden" id="kodepe" value="">
-                        <input class="w3-input w3-border w3-margin-bottom" type="date" placeholder="" id="tanggal" name="tanggal" required>
-                        <button class="button" type="button" id="kering">Input</button>
+                        <label><b>Tanggal Awal</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="date" placeholder="" id="tgl1" name="tanggal" required>
+                        <label><b>Tanggal Akhir</b></label>
+                        <input class="w3-input w3-border w3-margin-bottom" type="date" placeholder="" id="tgl2" name="tanggal" required>
+                        <button class="button" type="button" id="kering">Filter</button>
                         <button onclick="document.getElementById('id02').style.display='none'" type="button"
                             class="button-cancel">Cancel</button>
                     </div>

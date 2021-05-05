@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 04 Bulan Mei 2021 pada 07.19
+-- Waktu pembuatan: 04 Bulan Mei 2021 pada 13.35
 -- Versi server: 5.7.32
 -- Versi PHP: 8.0.0
 
@@ -114,13 +114,7 @@ CREATE TABLE `tb_detail_penerimaan` (
 --
 
 INSERT INTO `tb_detail_penerimaan` (`id_detail_penerimaan`, `kode_penerimaan`, `berat`, `potongan`, `potongan_zak`, `berat_total`, `bayar`, `tgl_data`) VALUES
-(16, 'INVMKPETMVW40E2', 5, 5, 0.50, 5, 500000, '2021-04-28 06:09:58'),
-(17, 'INVMKPETMVW40E2', 30, 5, 0.50, 30, 3000000, '2021-04-28 06:09:58'),
-(21, 'INVWE7LKCLB9LUU', 30, 5, 0.50, 30, 7000, '2021-05-03 21:11:04'),
-(22, 'INVWE7LKCLB9LUU', 5, 5, 0.50, 5, 7000, '2021-05-03 21:13:00'),
-(23, 'INVWE7LKCLB9LUU', 5, 5, 0.50, 5, 7000, '2021-05-03 21:14:29'),
-(24, 'INVWE7LKCLB9LUU', 5, 5, 0.50, 5, 7000, '2021-05-03 21:23:34'),
-(25, 'INVWE7LKCLB9LUU', 12, 5, 0.50, 12, 7000, '2021-05-03 22:26:07');
+(26, 'INVPUPBSWSQFCQW', 30, 5, 0.50, 30, 5000, '2021-05-04 01:16:18');
 
 -- --------------------------------------------------------
 
@@ -182,6 +176,7 @@ CREATE TABLE `tb_penerimaan` (
   `total_potongan` double NOT NULL,
   `total_pot_zak` double NOT NULL,
   `total_berat` float NOT NULL,
+  `harga` double NOT NULL,
   `total_bayar` double NOT NULL,
   `tgl_data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -191,10 +186,8 @@ CREATE TABLE `tb_penerimaan` (
 -- Dumping data untuk tabel `tb_penerimaan`
 --
 
-INSERT INTO `tb_penerimaan` (`id_penerimaan`, `kode_penerimaan`, `nama_gabah`, `tanggal`, `berat_kotor`, `total_potongan`, `total_pot_zak`, `total_berat`, `total_bayar`, `tgl_data`, `updated_at`) VALUES
-(10, 'INVMKPETMVW40E2', 'gabah lokal', '2021-04-28', 35, 1.75, 1, 33.25, 148350, '2021-04-29 06:20:07', '2021-04-29 06:20:07'),
-(12, 'INVWE7LKCLB9LUU', 'gabah rendi', '2021-05-04', 57, 2.25, 2, 54.75, 271450, '2021-05-04 05:26:07', '2021-05-04 05:26:07'),
-(13, 'INV9HTGFP1XXSDH', 'gabah-suryanto', '2021-05-04', 0, 5, 0, 0, 0, '2021-05-03 23:53:39', '2021-05-04 06:53:39');
+INSERT INTO `tb_penerimaan` (`id_penerimaan`, `kode_penerimaan`, `nama_gabah`, `tanggal`, `berat_kotor`, `total_potongan`, `total_pot_zak`, `total_berat`, `harga`, `total_bayar`, `tgl_data`, `updated_at`) VALUES
+(14, 'INVPUPBSWSQFCQW', 'Bagus Ramadan', '2021-05-04', 30, 1.5, 0.5, 28.5, 8000, 128800, '2021-05-04 08:42:38', '2021-05-04 08:42:38');
 
 -- --------------------------------------------------------
 
@@ -304,7 +297,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `tb_detail_penerimaan`
 --
 ALTER TABLE `tb_detail_penerimaan`
-  MODIFY `id_detail_penerimaan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_detail_penerimaan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_giling_gabah`
@@ -322,7 +315,7 @@ ALTER TABLE `tb_master_pot_zak`
 -- AUTO_INCREMENT untuk tabel `tb_penerimaan`
 --
 ALTER TABLE `tb_penerimaan`
-  MODIFY `id_penerimaan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_penerimaan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

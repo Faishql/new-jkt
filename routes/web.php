@@ -24,6 +24,9 @@ Route::prefix('/gabah')->group(function() {
     Route::get('/kering/data', [ZakatController::class, 'getGabahk']);
     Route::post('/kering', [ZakatController::class, 'addKering']);
     Route::post('/giling', [ZakatController::class, 'addGiling']);
+    Route::get('/giling', function() {
+        return view("giling");
+    });
 });
 
 Route::prefix('/detail')->group(function() {

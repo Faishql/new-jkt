@@ -25,7 +25,6 @@ function element(no, data) {
         <td>${data.total_berat}</td>
         <td>${data.total_bayar}</td>
         <td>${data.tgl_data}</td>
-        <td><a><button class="button" onClick="getmodal('${data.kode_penerimaan}')">kering</button></a></td>
     </tr>
     `
 }

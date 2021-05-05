@@ -7,7 +7,14 @@
 <div class="form">
   <div class="container-content">
       <div class="content-header">
-        <h2>LIST PENJEMURAN</h2>
+        
+          <h2>LIST PENJEMURAN</h2>
+          <div class="header-icons">
+            <button onclick="document.getElementById('id01').style.display='block'"><img src="{{ asset('assets/sun.svg')}}" alt=""></button>
+          </div>
+          
+       
+        
       </div>
       <table>
         <tr>
@@ -17,7 +24,6 @@
             <th>Total Berat</th>
             <th>Total Bayar</th>
             <th>Tanggal Data</th>
-            <th>Action</th>
         </tr>
         <tbody id="list-data">
           {{-- content --}}
@@ -26,12 +32,11 @@
     </div>
 </div>
 </div> 
-
-<div id="id02" class="w3-modal">
+<div id="id01" class="w3-modal">
   <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
 
       <div class="w3-center"><br>
-          <span onclick="document.getElementById('id02').style.display='none'"
+          <span onclick="document.getElementById('id01').style.display='none'"
               class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
       </div>
 
@@ -39,9 +44,12 @@
           <div class="w3-section">
               <label><b>Tanggal</b></label>
               <input type="hidden" id="kodepe" value="">
-              <input class="w3-input w3-border w3-margin-bottom" type="date" placeholder="" id="tanggal" name="tanggal" required>
+              <input class="w3-input w3-border w3-margin-bottom" type="" placeholder="" id="tanggal" name="tanggal" required>
+              <select name="" id="">
+                <option value="">jlakj</option>
+              </select>
               <button class="button" type="button" id="selep">Input</button>
-              <button onclick="document.getElementById('id02').style.display='none'" type="button"
+              <button onclick="document.getElementById('id01').style.display='none'" type="button"
                   class="button-cancel">Cancel</button>
           </div>
       </form>
