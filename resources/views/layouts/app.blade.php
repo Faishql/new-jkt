@@ -19,15 +19,12 @@
     <div class="container">
         <div class="container-nav">
             <ul>
-                <li><a class="{{ request()->is('home') ? 'active' : null }}" href="{{ url('/home') }}"><img src="{{ asset('assets/home-alt.svg') }}"></a></li>
-                <li>
-                    <a class="{{ request()->is('chart') ? 'active' : '' }}" href="/detail/1">
-                        <img src="{{ asset('assets/cart.svg') }}" alt="">
-                    </a>
-                </li>
-                <li><a href="#notification"><img src="{{ asset('assets/time.svg') }}"></a></li>
-                <li><a href="/gabah/kering"><img src="{{ asset('assets/sun.svg') }}"></a></li>
-                <li><a class="add {{ request()->is('gabah/add') ? 'active' : '' }}" href="/gabah/add"><img src="{{ asset('assets/plus.svg') }}"></a></li>
+                <li><a href="{{ url('/home') }}"><img src="{{ asset('assets/home-alt.svg') }}"></a></li>
+                <li><a class="{{ request()->is('home') ? 'active' : null }}" href="{{ url('/home') }}"><img src="{{ asset('assets/folder.svg') }}"></a></li>
+                <li><a class="{{ request()->is('gabah/kering') ? 'active' : '' }}" href="/gabah/kering"><img src="{{ asset('assets/sun.svg') }}"></a></li>
+                <li><a class="{{ request()->is('gabah/giling') ? 'active' : '' }}" href="/gabah/giling"><img src="{{ asset('assets/inbox.svg') }}"></a></li>
+                <!-- <li><a class="add {{ request()->is('gabah/add') ? 'active' : '' }}" href="/gabah/add"><img src="{{ asset('assets/plus.svg') }}"></a></li> -->
+                <li><a class="add {{ request()->is('gabah/add') ? 'active' : '' }}" href="/gabah/add"><img src="{{ asset('assets/exit.svg') }}"></a></li>
             </ul>
         </div>
     @yield('content')
