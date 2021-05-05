@@ -36,13 +36,6 @@ body {
     color: #000;
     text-decoration: none;
 }
-.container-nav li a.add {
-    margin-top: 160px;
-    padding: 15px;
-}
-.container-nav li a.add img {
-    border-radius: 50%;
-}
 .container-nav li a.active {
     background-color: #1ca7ec;
     color: white;
@@ -53,11 +46,11 @@ body {
 }
 
 /* CONTENT */
-.content-header{
+.content-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 220px 0 0;
+    margin: 0 130px 0 0;
 }
 .container-content {
     width: auto;
@@ -110,16 +103,18 @@ button {
 .header-button {
     background-color: white;
     color: #1ca7ec;
-    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+        rgba(17, 17, 26, 0.05) 0px 8px 32px;
     margin: 10px;
 }
-.header-button:hover{
-    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+.header-button:hover {
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+        rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
     transition: 7000ms;
 }
 
 /* DETAIL TABLE */
-.detail{
+.detail {
     padding: 20px;
 }
 .detail-table {
@@ -135,6 +130,6 @@ table.detail-table td {
     text-align: left;
     padding: 8px;
 }
-.cetak{
+.cetak {
     margin: 10px 0 20px 10px;
 }
