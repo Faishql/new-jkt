@@ -14,17 +14,33 @@ async function getData() {
     }
 }
 
+function formatRupiah(angka, prefix) {
+    var number_string = angka.replace(/[^,\d]/g, '').toString(),
+        split = number_string.split(','),
+        sisa = split[0].length % 3,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+    // tambahkan titik jika yang di input sudah menjadi angka ribuan
+    if (ribuan) {
+        separator = sisa ? '.' : ''
+        rupiah += separator + ribuan.join('.')
+    }
+
+    rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah
+    return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '')
+}
+
 getData()
 
 function element(no, data) {
     return `
     <tr>
         <td>${no}</td>
-        <td>${data.kode_penerimaan}</td>
         <td>${data.nama_gabah}</td>
         <td>${data.total_berat}</td>
-        <td>${data.total_bayar}</td>
-        <td>${data.tgl_data}</td>
+        <td>${formatRupiah(data.total_bayar.toString(), 'Rp.')}</td>
+        <td>${data.tanggal}</td>
     </tr>
     `
 }
@@ -34,29 +50,6 @@ async function get() {
     const result = await process.json()
     return result
 }
-
-const selep = document.getElementById('selep')
-
-selep.addEventListener('click', async () => {
-    const kode = document.getElementById('kodepe').value
-    const tanggal = document.getElementById('tanggal').value
-
-    try {
-        selep.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
-        await fetch(`${url_origin}/gabah/giling`, {
-            method: 'POST',
-            body: JSON.stringify({ kode: kode, tgl: tanggal}),
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': token
-            }
-        })
-    } catch (error) {
-        console.log(error)
-    } finally {
-        selep.innerHTML = 'input'
-    }
-})
 
 function getmodal(kode) {
     document.getElementById('id02').style.display = 'block'

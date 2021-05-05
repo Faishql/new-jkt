@@ -1,21 +1,22 @@
 const tombolFilter = document.getElementById('filter')
-const url_origin = document.getElementById('baseurl').value
-const token = document.getElementById('token').value
-const tgl1 = document.getElementById('tgl1').value
-const tgl2 = document.getElementById('tgl2').value
 
 tombolFilter.addEventListener('click', async () => {
     try {
         document.getElementById('list-data').innerHTML = '<div class="loader"></div>'
         await display()
-    } catch(e) {
+    } catch (e) {
+        console.log(e)
         document.getElementById('list-data').innerHTML = 'error'
     }
 })
 
 /** function get data from route **/
 async function getFilter() {
+    const tgl1 = document.getElementById('tgl1').value
+    const tgl2 = document.getElementById('tgl2').value
+
     const data = await fetch(`${url_origin}/filter`, {
+        method: 'post',
         body: JSON.stringify({ tgl2: tgl2, tgl1: tgl1 }),
         headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token }
     })
@@ -38,13 +39,36 @@ function htmldata(res, no) {
         <tr>
             <td>${no}</td>
             <td>${res.nama_gabah}</td>
+            <td>${res.nama_gabah}</td>
             <td>${res.total_berat} kg</td>
+            <td>${res.total_pot_zak}</td>
+            <td>${formatRupiah(res.harga.toString(), 'Rp.')}</td>
             <td>${formatRupiah(res.total_bayar.toString(), 'Rp.')}</td>
             <td>
                 <a><button id="modal" onClick="getmodal('${res.kode_penerimaan}')"
-                        class="button" value="${res.kode_penerimaan}"><img src="${url_origin}/assets/cart-add.svg"></button></a>
-                <a><button class="button" onClick="getmodal4('${res.kode_penerimaan}')"><img src="${url_origin}/assets/info.svg"></button></a>
+                        class="button icons-button" value="${res.kode_penerimaan}"><i class="fas fa-arrow-up" style="padding: 6px 6px;"></i></button></a>
+                <a><button class="button icons-button" onClick="getmodal4('${res.kode_penerimaan}')"><i class="far fa-eye" style="padding: 6px 6px;"></i></button></a>
             </td>
         </tr>
     `
 }
+
+const ud = document.getElementById('ude')
+
+ud.addEventListener('click', async () => {
+    const berat = document.getElementById('uppot').value
+    const code = document.getElementById('idpe').value
+    ud.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
+    await fetch(`${url_origin}/gabah/udetail`, {
+        method: 'post',
+        body: JSON.stringify({ kode: code, pot: berat }),
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token }
+    }).then(response => {
+        ud.innerHTML = 'success'
+        setTimeout(() => {
+            document.getElementById('id05').style.display = 'none'
+        }, 2000)
+    }).catch(error => {
+        ud.innerHTML = 'error'
+    })
+})

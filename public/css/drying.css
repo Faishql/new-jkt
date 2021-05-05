@@ -76,13 +76,12 @@ td {
 }
 button {
     background-color: #fff;
-    border: none;
-    padding: 8px 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
     margin: 4px 2px;
+    padding: 4px 12px;
     transition-duration: 0.3s;
     cursor: pointer;
 }
@@ -93,10 +92,21 @@ button {
 }
 .button-cancel {
     color: #fff;
+    border: 1px #ec231c solid;
     background-color: #ec231c;
 }
-
 .button:hover {
     background-color: #1ca7ec;
     color: #514f51;
+}
+.icons-button {
+    padding: 6px 6px;
+    border: 1.3px #515151 solid;
+    border-radius: 50%;
+    background-color: white;
+    color: #1ca7ec;
+}
+.icons-button:hover {
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+        rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }

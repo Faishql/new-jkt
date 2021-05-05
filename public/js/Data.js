@@ -33,14 +33,12 @@ add.addEventListener('click', async () => {
 
 addPenerimaan.addEventListener('click', async () => {
     const berat = document.getElementById('berat').value
-    const bayar = document.getElementById('bayar').value
-    const potongan = document.getElementById('potongan').value
     const id = document.getElementById('kodepenerimaan').value
 
     try {
         addPenerimaan.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
         await insertData(`${url_origin}/detail/invoice`, 'POST', {
-            berat: berat, bayar: bayar, kode_penerimaan: id, pot: potongan
+            berat: berat, kode_penerimaan: id
         }, {
             'Content-Type': 'application/json',
             'X-CSRF-Token': token
@@ -101,12 +99,15 @@ function elemen(data, no) {
     return `<tr>
                 <td>${no}</td>
                 <td>${data.nama_gabah}</td>
+                <td>${data.tanggal}</td>
                 <td>${data.total_berat} kg</td>
+                <td>${data.total_potongan} kg</td>
+                <td>${formatRupiah(data.harga.toString(), 'Rp.')}</td>
                 <td>${formatRupiah(data.total_bayar.toString(), 'Rp.')}</td>
                 <td>
                     <a><button id="modal" onClick="getmodal('${data.kode_penerimaan}')"
-                            class="button" value="${data.kode_penerimaan}"><img src="${url_origin}/assets/cart-add.svg"></button></a>
-                    <a><button class="button" onClick="getmodal4('${data.kode_penerimaan}')"><img src="${url_origin}/assets/info.svg"></button></a>
+                            class="icons-button" value="${data.kode_penerimaan}"><img src="${url_origin}/assets/upload.svg"></button></a>
+                    <a><button class="icons-button" onClick="getmodal4('${data.kode_penerimaan}')"><img src="${url_origin}/assets/eye.svg"></button></a>
                 </td>
             </tr>`
 
@@ -119,7 +120,6 @@ function getmodal(kode) {
 
 function getmodal2(kode) {
     document.getElementById('id02').style.display = 'block'
-    document.getElementById('kodepe').value = kode
 }
 function getmodal3() {
     document.getElementById('id03').style.display = 'block'
@@ -208,27 +208,14 @@ function elemendetail(res) {
     return `<tr>
                 <td>${res.kode_penerimaan}</td>
                 <td>${res.berat}</td>
-                <td>${res.bayar}</td>
+                <td><button class="icons-button" onclick="getmodal5('${res.id_detail_penerimaan}')"><img src="${url_origin}/assets/edit.svg" ></button></td>  
             </tr>`
 }
 
-const kering = document.getElementById('kering')
+async function getmodal5(kode) {
+    document.getElementById('id05').style.display = 'block'
+    document.getElementById('idpe').value = kode
+    console.log(kode)
+    await displayDetail()
+}
 
-kering.addEventListener('click', async () => {
-
-    const tgl = document.getElementById('tanggal').value
-    const kode = document.getElementById('kodepe').value
-
-    try {
-        kering.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
-        await insertData(`${url_origin}/gabah/kering`, 'POST', { 
-            kode : kode, tgl : tgl
-        }, { 'Content-Type': 'application/json', 'X-CSRF-Token' : token } )
-    } catch (error) {
-        console.log(error)
-        kering.innerHTML = 'error'
-    } finally {
-        kering.innerHTML = 'success'
-    }
-
-})

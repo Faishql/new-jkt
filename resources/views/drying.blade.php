@@ -6,21 +6,16 @@
 @section('content')
 <div class="form">
   <div class="container-content">
-      <div class="content-header">
-        
-          <h2>LIST PENJEMURAN</h2>
+      <div class="content-header">   
+          <h2>DATA PENJEMURAN</h2>
           <div class="header-icons">
-            <button onclick="document.getElementById('id01').style.display='block'"><img src="{{ asset('assets/sun.svg')}}" alt=""></button>
-          </div>
-          
-       
-        
+            <button class="icons-button" id="modal" onclick="document.getElementById('id01').style.display='block'"><img src="{{ asset('assets/sun.svg')}}" alt=""></button>
+          </div>  
       </div>
       <table>
         <tr>
-            <th>Id</th>
-            <th>Kode Penerimaan</th>
-            <th>Nama Gabah</th>
+            <th>No</th>
+            <th>Nama Pengirim</th>
             <th>Total Berat</th>
             <th>Total Bayar</th>
             <th>Tanggal Data</th>
@@ -43,12 +38,11 @@
       <form class="w3-container" action="">
           <div class="w3-section">
               <label><b>Tanggal</b></label>
-              <input type="hidden" id="kodepe" value="">
-              <input class="w3-input w3-border w3-margin-bottom" type="" placeholder="" id="tanggal" name="tanggal" required>
-              <select name="" id="">
-                <option value="">jlakj</option>
+              <input class="w3-input w3-border w3-margin-bottom" type="date" placeholder="" id="tanggal" name="tanggal" required>
+              <select class="w3-select w3-border w3-margin-bottom" id="selector" name="option">
+                
               </select>
-              <button class="button" type="button" id="selep">Input</button>
+              <button class="button" type="button" id="tkering">Input</button>
               <button onclick="document.getElementById('id01').style.display='none'" type="button"
                   class="button-cancel">Cancel</button>
           </div>
@@ -56,6 +50,7 @@
   </div>
 </div> 
 
+<script src="{{ asset('js/Kering.js') }}"></script>
 <script src="{{ asset('js/Detail.js') }}"></script> 
 @endsection
         

@@ -52,9 +52,6 @@
           <div class="modal-body">
             <form>
               <div class="mb-4">
-                <input type="text" class="form-control " id="username" placeholder="username">
-              </div>
-              <div class="mb-4">
                 <input type="email" class="form-control " id="email" placeholder="email">
               </div>
               <div class="mb-4">

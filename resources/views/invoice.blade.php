@@ -91,7 +91,7 @@
                 <table class="submengtotal">
                     <tr>
                         <td style="text-align: left;">Bayar</td>
-                        <td style="text-align: right;">{{ $total_gabah }} x 4.600</td>
+                        <td style="text-align: right;">{{ $total_gabah }} x {{ $harga }}</td>
                         <td style="text-align: right;" id="bayar"></td>
                         <input type="hidden" id="bayarvalue" value="{{ $bayar }}">
                     </tr>
@@ -106,9 +106,9 @@
         <div class="row justify-content-center tombol">
             <div class="col-6">
                 <!-- Tombol Print -->
-                <button type="button" class="btn btn-primary biru mb-2 tmbl">
+                <a href="/home" class="btn btn-primary biru mb-2 tmbl">
                     <i class="bi bi-arrow-counterclockwise"></i> Kembali
-                </button>
+                </a>
                 <!-- Akhir Tombol Print -->
             </div>
             <div class="col-6" id="btn">

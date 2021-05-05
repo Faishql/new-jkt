@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ZakatController;
+use App\Http\Controllers\LimitController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,9 +25,12 @@ Route::prefix('/gabah')->group(function() {
     Route::get('/kering/data', [ZakatController::class, 'getGabahk']);
     Route::post('/kering', [ZakatController::class, 'addKering']);
     Route::post('/giling', [ZakatController::class, 'addGiling']);
+    Route::post('/udetail', [ZakatController::class, 'uDetail']);
     Route::get('/giling', function() {
         return view("giling");
     });
+    
+    Route::get('/getGil', [ZakatController::class, 'getGil']);
 });
 
 Route::prefix('/detail')->group(function() {
@@ -34,7 +38,14 @@ Route::prefix('/detail')->group(function() {
     Route::post('/invoice', [ZakatController::class, 'addChart']);
 });
 
+Route::post('/filter', [LimitController::class, 'filterData']);
+
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/logout', [AuthController::class, 'Logout']);
+Route::get('/dashboard', function () {
+   return view('dashboard'); 
+});
+
+Route::get('/getSelect', [ZakatController::class, 'getSelect']);
 
 Route::get('/cetak/{kode}', [ZakatController::class, 'updateGabah']);

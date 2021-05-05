@@ -42,11 +42,12 @@ class ZakatController extends Controller
         $insert = Detail::insert([
             'kode_penerimaan' => $req->kode_penerimaan,
             'berat' => $req->berat,
-            'potongan' => $req->pot,
+            'potongan' => 0,
             'potongan_zak' => 0.5,
             'berat_total' => $req->berat,
-            'bayar' => $req->bayar,
-            'tgl_data' => now()
+            'bayar' => 0,
+            'tgl_data' => now(),
+            'updated_at' => now()
         ]);
 
         if ($insert) {
@@ -54,6 +55,7 @@ class ZakatController extends Controller
             
             return Penerimaan::where('kode_penerimaan', $req->kode_penerimaan)->update([
                 'berat_kotor' => $p['berat_kotor'] += $req->berat,
+                'total_potongan' => $p['total_potongan'] += 0.5,
                 'total_berat' => $p['total_berat'] += $req->berat,
                 'total_bayar' => $p['total_bayar'] += $req->berat * $p['harga'],
                 'updated_at' => now()
@@ -107,8 +109,8 @@ class ZakatController extends Controller
             'nama_gabah' => $req->nama,
             'tanggal' => now(),
             'berat_kotor' => 0,
-            'total_potongan' => 5,
-            'total_pot_zak' => 0,
+            'total_potongan' => 0,
+            'total_pot_zak' => 0.5,
             'total_berat' => 0,
             'harga' => $req->bayar,
             'total_bayar' => 0,
@@ -129,6 +131,7 @@ class ZakatController extends Controller
     public function updateGabah(Request $req)
     {
         $dataList = [];
+        $harga = Penerimaan::select('harga')->where('kode_penerimaan', $req->kode)->first();
         $totalkotor = 0;
         $totalpot = 0;
         $afterpotongan = 0;
@@ -160,7 +163,8 @@ class ZakatController extends Controller
             'potongan_zak' => $pot,
             'final_potongan' => $potonganakhir,
             'total_gabah' => $afterpotongan - $potonganakhir,
-            'bayar' => ($afterpotongan - $potonganakhir) * 4600
+            'bayar' => ($afterpotongan - $potonganakhir) * $harga['harga'],
+            'harga' => $harga['harga']
         ];
 
         $update = Penerimaan::where('kode_penerimaan', $req->kode)->update([
@@ -224,9 +228,32 @@ class ZakatController extends Controller
             'berat_kotor' => $penerimaan['berat_kotor'],
             'total_potongan' => $penerimaan['total_potongan'],
             'total_pot_zak' => $penerimaan['total_pot_zak'],
-            'total_berat' => $penerimaan['total_berat'],
+            'total_berat' => $req->berat,
             'total_bayar' => $penerimaan['total_bayar'],
             'tgl_data' => now()
         ]) ? response()->json(['pesan' => 'sukses']) : response()->json(['pesan' => 'gagal']);
     }
+    
+    public function uDetail(Request $req)
+    {
+        return Detail::where('id_detail_penerimaan', $req->kode)->update([
+            'potongan' => $req->pot
+        ]) ? response()->json(['pesan' => 'sukses']) : response()->json(['pesan' => 'gagal']);
+    }
+    
+    public function getSelect()
+    {
+        return response()->json(['pesan' => 'sukses', 'data' => Penerimaan::orderBy('id_penerimaan', 'desc')->get()]);
+    }
+    
+    public function getGil()
+    {
+        return response()->json(['pesan' => 'sukses', 'data' => Giling::orderBy('id_giling_gabah', 'desc')->get()]);
+    }
+    
+    public function listChart(array $arr)
+    {
+        # code...
+    }
+    
 }
