@@ -45,15 +45,21 @@
                 <table>
                     <tr>
                         <th>No</th>
-                        <th>Berat (Kg)</th>
+                        <th style="border-bottom: none;">Berat (Kg)</th>
                         <th>Pot (%)</th>
                         <th>Total</th>
                     </tr>
                     @foreach ($datalist as $item)
                         <tr>
                             <td>{{ $item['no'] }}</td>
-                            <td>{{ $item['berat'] }}</td>
-                            <td>{{ $item['potongan'] }}</td>
+                            <td class="berat">
+                                <p style="margin-bottom: 0; width: 125px; float: left;">
+                                    @for ($i = 0; $i < count($item['berat']); $i++)
+                                        {{ $item['berat'][$i] . ',' }}
+                                    @endfor
+                                </p>
+                            </td>
+                            <td>{{ $item['diskon'] }}</td>
                             <td>{{ $item['total'] }}</td>
                         </tr>
                     @endforeach
