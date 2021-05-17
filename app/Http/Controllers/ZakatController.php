@@ -20,8 +20,8 @@ class ZakatController extends Controller
     public function getChart($id)
     {
         $data = Detail::where('kode_penerimaan', $id)->get();
-        $bio = Penerimaan::select('kode_penerimaan', 'harga')->where('kode_penerimaan', $id)->get();
-        return response()->json(['pesan' => 'success', 'data' => $data, 'iden' => $bio]);
+        // $bio = Penerimaan::select('kode_penerimaan', 'harga')->where('kode_penerimaan', $id)->get();
+        return response()->json(['pesan' => 'success', 'data' => $data]);
     }
 
     /**
@@ -67,7 +67,7 @@ class ZakatController extends Controller
             abort('401', 'login required');
         }
 
-        $data = Penerimaan::whereDay('tgl_data', date('d'))->orderBy('id_penerimaan', 'desc')->get();
+        $data = Penerimaan::whereDate('tgl_data', now())->orderBy('id_penerimaan', 'desc')->get();
         return response()->json(['pesan' => 'sukses', 'data' => $data]);
     }
 

@@ -72,7 +72,7 @@
                         <input class="w3-input w3-border w3-margin-bottom" type="date" value="" id="tgl1" name="tanggal" required>
                         <label><b>Tanggal Akhir</b></label>
                         <input class="w3-input w3-border w3-margin-bottom" type="date" value="" id="tgl2" name="tanggal" required>
-                        <button class="button" type="button" id="filter">Filter</button>
+                        <button class="button" type="button" onclick="filter()">Filter</button>
                         <button onclick="document.getElementById('id02').style.display='none'" type="button"
                             class="button-cancel">Cancel</button>
                     </div>
@@ -113,6 +113,7 @@
                     <tr>
                         <th>Kode Penerimaan</th>
                         <th>Berat</th>
+                        <th>Potongan</th>
                         <th>Action</th>
                     </tr>
                     <tbody id="list-detail">
