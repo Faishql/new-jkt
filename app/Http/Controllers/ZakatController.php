@@ -6,7 +6,6 @@ use App\Models\Detail;
 use App\Models\Giling;
 use App\Models\Kering;
 use App\Models\Penerimaan;
-use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -20,8 +19,8 @@ class ZakatController extends Controller
     public function getChart($id)
     {
         $data = Detail::where('kode_penerimaan', $id)->get();
-        // $bio = Penerimaan::select('kode_penerimaan', 'harga')->where('kode_penerimaan', $id)->get();
-        return response()->json(['pesan' => 'success', 'data' => $data]);
+        $bio = Penerimaan::select('kode_penerimaan', 'harga')->where('kode_penerimaan', $id)->get();
+        return response()->json(['pesan' => 'success', 'data' => $data, 'iden' => $bio]);
     }
 
     /**

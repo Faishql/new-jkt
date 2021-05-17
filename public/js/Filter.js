@@ -60,8 +60,7 @@ ud.addEventListener("click", async () => {
         method: "post",
         body: JSON.stringify({ kode: code, pot: berat }),
         headers: { "Content-Type": "application/json", "X-CSRF-Token": token },
-    })
-        .then(async (response) => {
+    }).then(async (response) => {
             ud.innerHTML = "success";
             await displayDetail();
             setTimeout(() => {

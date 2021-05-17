@@ -86,12 +86,12 @@ async function displayGiling() {
 function elementGiling(res, no) {
     return `
         <tr>
-        <td>${no}</td>
-        <td>${res.nama_gabah}</td>
-        <td>${res.total_berat}</td>
-        <td>${formatRupiah(res.total_bayar.toString(), 'Rp.')}</td>
-        <td>${res.tanggal}</td>
-    </tr>
+            <td>${no}</td>
+            <td>${res.nama_gabah}</td>
+            <td>${res.total_berat}</td>
+            <td>${formatRupiah(res.total_bayar.toString(), 'Rp.')}</td>
+            <td>${res.tanggal}</td>
+        </tr>
     `
 }
 
