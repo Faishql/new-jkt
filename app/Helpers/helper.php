@@ -19,5 +19,5 @@ function validate()
 
 function isAdmin()
 {
-    return session('level') == 2 ? true : false;
+    return session('level') === 2 ? true : false;
 }

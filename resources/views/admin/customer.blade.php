@@ -33,86 +33,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="odd gradeX">
-                                    <td>1</td>
-                                    <td>Rendi</td>
-                                    <td>Malang</td>
-                                    <td class="center">000</td>
-                                    <td><button class="btn btn-warning">Update</button></td>
-                                    <td><button class="btn btn-danger">Delete</button></td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>2</td>
-                                    <td>Bagus</td>
-                                    <td>Malang</td>
-                                    <td class="center">000</td>
-                                    <td><button class="btn btn-warning">Update</button></td>
-                                    <td><button class="btn btn-danger">Delete</button></td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>3</td>
-                                    <td>Faisal</td>
-                                    <td>Malang</td>
-                                    <td class="center">000</td>
-                                    <td><button class="btn btn-warning">Update</button></td>
-                                    <td><button class="btn btn-danger">Delete</button></td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>4</td>
-                                    <td>Dino</td>
-                                    <td>Malang</td>
-                                    <td class="center">000</td>
-                                    <td><button class="btn btn-warning">Update</button></td>
-                                    <td><button class="btn btn-danger">Delete</button></td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>5</td>
-                                    <td>Rama</td>
-                                    <td>Malang</td>
-                                    <td class="center">000</td>
-                                    <td><button class="btn btn-warning">Update</button></td>
-                                    <td><button class="btn btn-danger">Delete</button></td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>6</td>
-                                    <td>Bima</td>
-                                    <td>Malang</td>
-                                    <td class="center">000</td>
-                                    <td><button class="btn btn-warning">Update</button></td>
-                                    <td><button class="btn btn-danger">Delete</button></td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>7</td>
-                                    <td>Denza</td>
-                                    <td>Malang</td>
-                                    <td class="center">000</td>
-                                    <td><button class="btn btn-warning">Update</button></td>
-                                    <td><button class="btn btn-danger">Delete</button></td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>8</td>
-                                    <td>Naufal</td>
-                                    <td>Malang</td>
-                                    <td class="center">000</td>
-                                    <td><button class="btn btn-warning">Update</button></td>
-                                    <td><button class="btn btn-danger">Delete</button></td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>9</td>
-                                    <td>Rafli</td>
-                                    <td>Malang</td>
-                                    <td class="center">000</td>
-                                    <td><button class="btn btn-warning">Update</button></td>
-                                    <td><button class="btn btn-danger">Delete</button></td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>10</td>
-                                    <td>Jusuf</td>
-                                    <td>Malang</td>
-                                    <td class="center">000</td>
-                                    <td><button class="btn btn-warning">Update</button></td>
-                                    <td><button class="btn btn-danger">Delete</button></td>
-                                </tr>
+                                @foreach ($customer as $item)
+                                    <tr class="odd gradeX">
+                                        <td>1</td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->alamat }}</td>
+                                        <td class="center">{{ $item->no_telp }}</td>
+                                        <td><button class="btn btn-warning">Update</button></td>
+                                        <td><button class="btn btn-danger">Delete</button></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

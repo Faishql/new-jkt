@@ -8,7 +8,7 @@ use App\Http\Controllers\ZakatController;
 use App\Http\Controllers\LimitController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use League\CommonMark\Block\Element\IndentedCode;
 
 Route::get('/', function () {
     return view('welcome');
@@ -59,8 +59,29 @@ Route::get('/cetak/{kode}', [ZakatController::class, 'updateGabah']);
 */
 
 Route::prefix('/admin')->group(function () {
+
     Route::get('/', [IndexController::class, 'index']);
-    Route::get('/barang', [IndexController::class, 'barang']);
-    Route::get('/customer', [IndexController::class, 'customer']);
-    Route::delete('/user/{id}', [IndexController::class, 'delUser'])->name('deluser');
+
+    // Routing actions user
+    Route::prefix('/user')->group(function () {
+        Route::delete('/{id}', [IndexController::class, 'delUser'])->name('deluser');
+        Route::post('/', [IndexController::class, 'addUser']);
+        Route::put('/{id}', [IndexController::class, 'upUser']);
+    });
+
+    // Routing actions barang
+    Route::prefix('/barang')->group(function () {
+        Route::get('/', [IndexController::class, 'barang']);
+        Route::post('/', [IndexController::class, 'addBarang']);
+        Route::put('/{id}', [IndexController::class, 'upBarang']);
+        Route::delete('/{id}', [IndexController::class, 'delBarang']);
+    });
+
+    // Routing actions customer
+    Route::prefix('/customer')->group(function () {
+        Route::get('/', [IndexController::class, 'customer']);
+        Route::post('/', [IndexController::class, 'addCustomer']);
+        Route::put('/{id}', [IndexController::class, 'upCustomer']);
+        Route::delete('/{id}', [IndexController::class, 'delCustomer']);
+    });
 });

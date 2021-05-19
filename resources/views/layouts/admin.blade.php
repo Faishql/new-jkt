@@ -33,11 +33,11 @@
                     <ul class="nav pull-right">
                         <li class="nav-user dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Nama
+                                {{ session('username') }}
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Logout</a></li>
+                                <li><a href="/logout">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
