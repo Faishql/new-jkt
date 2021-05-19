@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ZakatController;
@@ -16,7 +18,7 @@ Route::post('/loginnew', [AuthController::class, 'Login']);
 Route::get('/register', [AuthController::class, 'viewLogin']);
 Route::post('/register', [AuthController::class, 'Register']);
 
-Route::prefix('/gabah')->group(function() {
+Route::prefix('/gabah')->group(function () {
     Route::get('/get', [ZakatController::class, 'getGabah']);
     Route::post('/add', [ZakatController::class, 'addGabah']);
     Route::get('/add', [ZakatController::class, 'viewAdd']);
@@ -26,14 +28,14 @@ Route::prefix('/gabah')->group(function() {
     Route::post('/kering', [ZakatController::class, 'addKering']);
     Route::post('/giling', [ZakatController::class, 'addGiling']);
     Route::post('/udetail', [ZakatController::class, 'uDetail']);
-    Route::get('/giling', function() {
+    Route::get('/giling', function () {
         return view("giling");
     });
-    
+
     Route::get('/getGil', [ZakatController::class, 'getGil']);
 });
 
-Route::prefix('/detail')->group(function() {
+Route::prefix('/detail')->group(function () {
     Route::get('/invoice/{id}', [ZakatController::class, 'getChart']);
     Route::post('/invoice', [ZakatController::class, 'addChart']);
 });
@@ -43,9 +45,22 @@ Route::post('/filter', [LimitController::class, 'filterData']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/logout', [AuthController::class, 'Logout']);
 Route::get('/dashboard', function () {
-   return view('dashboard'); 
+    return view('dashboard');
 });
 
 Route::get('/getSelect', [ZakatController::class, 'getSelect']);
 
 Route::get('/cetak/{kode}', [ZakatController::class, 'updateGabah']);
+
+/*
+    ================================================================
+                            Router Admin
+    ================================================================
+*/
+
+Route::prefix('/admin')->group(function () {
+    Route::get('/', [IndexController::class, 'index']);
+    Route::get('/barang', [IndexController::class, 'barang']);
+    Route::get('/customer', [IndexController::class, 'customer']);
+    Route::delete('/user/{id}', [IndexController::class, 'delUser'])->name('deluser');
+});

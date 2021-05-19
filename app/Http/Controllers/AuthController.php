@@ -41,9 +41,11 @@ class AuthController extends Controller
 
         $this->createSession($req, $validate['data']);
 
-        return password_verify($req->password, $validate['data']['password']) ? response()->json(['pesan' => 'login sukses']) : response()->json(['pesan' => 'login gagal']);
+        return password_verify($req->password, $validate['data']['password'])
+            ? response()->json(['pesan' => 'login sukses', 'role' => $validate['data']['level']])
+            : response()->json(['pesan' => 'login gagal']);
     }
-    
+
     /**
      * function proceesing register
      * @param Request
@@ -71,6 +73,7 @@ class AuthController extends Controller
         $req->session()->put('username', $validate['name']);
         $req->session()->put('email', $validate['email']);
         $req->session()->put('user_id', $validate['id']);
+        $req->session()->put('level', $validate['level']);
     }
     /**
      * @return redirect
@@ -81,8 +84,8 @@ class AuthController extends Controller
             session()->pull('username');
             session()->pull('email');
             session()->pull('user_id');
+            session()->pull('level');
         }
         return redirect('/');
     }
-    
 }
