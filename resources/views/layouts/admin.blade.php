@@ -86,7 +86,6 @@
                 <script src="{{ asset('') }}document/scripts/datatables/jquery.dataTables.js"
                     type="text/javascript"></script>
                 <script src="{{ asset('') }}document/scripts/common.js" type="text/javascript"></script>
-                <script src="{{ asset('') }}document/scripts/myscript.js" type="text/javascript"></script>
 
 </body>
 </head>

@@ -158,7 +158,5 @@
     <!-- Akhir Modal Edit -->
     <!--/.wrapper-->
 
-    <script>
-
-    </script>
+    <script src="{{ asset('') }}document/scripts/myscript.js" type="text/javascript"></script>
 @endsection

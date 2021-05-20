@@ -1,17 +1,25 @@
-const modalBarang = document.getElementById("modalBarang");
+const modalBarang = document.getElementsByClassName("modalBarang");
 const origin = document.getElementById("baseurl").value;
 const urlBarang = `${origin}/admin/barang/getup/`;
 
-modalBarang.onclick = () => {
-    const id = document.getElementById("id_barang").value;
+const handleClick = function () {
+    const id = this.getAttribute("data-id");
+    document.getElementById(
+        "editBarang"
+    ).action = `${origin}/admin/barang/${id}`;
+
     fetch(urlBarang + id)
         .then((res) => res.json())
         .then((res) => res.data)
         .then((res) => {
-            document.querySelector("input[name=namabarang]").value = res.nama;
-            document.querySelector("input[name=satuan]").value = res.satuan;
-            document.querySelector("input[name=kemasan]").value = res.kemasan;
-            document.querySelector("input[name=jenis]").value = res.jenis;
-            document.querySelector("input[name=harga]").value = res.hrg_jual;
+            document.querySelector("input[name=unama]").value = res.nama;
+            document.querySelector("input[name=usatuan]").value = res.satuan;
+            document.querySelector("input[name=ukemasan]").value = res.kemasan;
+            document.querySelector("input[name=ujenis]").value = res.jenis;
+            document.querySelector("input[name=uharga]").value = res.hrg_jual;
         });
 };
+
+for (let i = 0; i < modalBarang.length; i++) {
+    modalBarang[i].addEventListener("click", handleClick, false);
+}
