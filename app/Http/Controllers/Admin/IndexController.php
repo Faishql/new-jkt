@@ -63,8 +63,8 @@ class IndexController extends Controller
     {
         (!isAdmin()) ? abort('401', 'cant access this page') : '';
         return $this->user->updateUser([
-            'name' => $req->nama,
-            'email' => $req->email
+            'name' => $req->name,
+            'email' => $req->eemail
         ], $id);
     }
 
@@ -75,7 +75,15 @@ class IndexController extends Controller
 
     public function addUser(Request $req)
     {
-        return $this->auth->Register($req);
+        $req->validate([
+            'email' => 'required|unique:users,email'
+        ]);
+        return $this->auth->Register([
+            'name' => $req->username,
+            'email' => $req->email,
+            'password' => bcrypt($req->password),
+            'level' => 1
+        ]);
     }
 
     // ===================== end actions user ==================== //
@@ -86,11 +94,11 @@ class IndexController extends Controller
     {
         (!isAdmin()) ? abort('401', 'cant access this page') : '';
         return $this->barang->updateBarang([
-            'nama' => $req->nama,
-            'satuan' => $req->satuan,
-            'kemasan' => $req->kemasan,
-            'jenis' => $req->jenis,
-            'hrg_jual' => $req->harga
+            'nama' => $req->unama,
+            'satuan' => $req->usatuan,
+            'kemasan' => $req->ukemasan,
+            'jenis' => $req->ujenis,
+            'hrg_jual' => $req->uharga
         ], $id);
     }
 
@@ -104,11 +112,11 @@ class IndexController extends Controller
     {
         (!isAdmin()) ? abort('401', 'cant access this page') : '';
         return $this->barang->addBarang([
-            'nama' => $req->nama,
-            'satuan' => $req->satuan,
-            'kemasan' => $req->kemasan,
-            'jenis' => $req->jenis,
-            'hrg_jual' => $req->harga
+            'nama' => $req->anama,
+            'satuan' => $req->asatuan,
+            'kemasan' => $req->akemasan,
+            'jenis' => $req->ajenis,
+            'hrg_jual' => $req->aharga
         ]);
     }
 
@@ -127,9 +135,9 @@ class IndexController extends Controller
     {
         (!isAdmin()) ? abort('401', 'cant access this page') : '';
         return $this->customer->addCustomer([
-            'nama' => $req->nama,
-            'alamat' => $req->alamat,
-            'no_telp' => $req->no
+            'nama' => $req->anama,
+            'alamat' => $req->aalamat,
+            'no_telp' => $req->ano
         ]);
     }
 
@@ -145,9 +153,9 @@ class IndexController extends Controller
     {
         (!isAdmin()) ? abort('401', 'cant access this page') : '';
         return $this->customer->updateCustomer([
-            'nama' => $req->nama,
-            'alamat' => $req->alamat,
-            'no_telp' => $req->no
+            'nama' => $req->unama,
+            'alamat' => $req->ualamat,
+            'no_telp' => $req->uno
         ], $id);
     }
 

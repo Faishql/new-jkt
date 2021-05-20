@@ -17,6 +17,19 @@
                         <p class="text-muted">Transaksi Hari Ini</p>
                     </div>
                 </div>
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>success!</strong> {{ session('success') }}
+                    </div>
+
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
                 <div class="module">
                     <div class="module-head">
                         <div class="row-fluid">
@@ -50,8 +63,8 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td class="center">{{ $item->level === 1 ? 'petugas' : 'admin' }}</td>
-                                        <td><a href="#modaledit" role="button" class="btn btn-warning" data-toggle="modal"
-                                                data-id="{{ $item->id }}" id="modalUser">Edit</a></td>
+                                        <td><a href="#modaledit" role="button" class="btn btn-warning modalUser"
+                                                data-toggle="modal" data-id="{{ $item->id }}">Edit</a></td>
                                         <td>
                                             <form action="{{ baseUrl() }}/admin/user/{{ $item->id }}" method="POST">
                                                 @csrf
@@ -78,6 +91,7 @@
     <div id="modaltambah" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
         <form action="/admin/user" method="post">
+            @csrf
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 id="myModalLabel">Tambah User</h3>
@@ -115,21 +129,23 @@
     <div id="modaledit" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
         <form action="" method="post" id="editUser">
+            @csrf
+            @method('PUT')
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 id="myModalLabel">Edit User</h3>
             </div>
             <div class="modal-body">
                 <div class="control-group">
-                    <label class="control-label" for="username">Username</label>
+                    <label class="control-label" for="name">Username</label>
                     <div class="controls">
-                        <input type="text" id="username" placeholder="" class="span5">
+                        <input type="text" id="name" name="name" placeholder="" class="span5">
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="email">Email</label>
+                    <label class="control-label" for="eemail">Email</label>
                     <div class="controls">
-                        <input type="text" id="email" placeholder="" class="span5">
+                        <input type="text" id="eemail" name="eemail" placeholder="" class="span5">
                     </div>
                 </div>
             </div>

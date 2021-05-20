@@ -51,14 +51,9 @@ class AuthController extends Controller
      * @param Request
      * @return json data
      */
-    public function Register(Request $req)
+    public function Register($req)
     {
-        $validate = User::insert([
-            'name' => $req->name,
-            'email' => $req->email,
-            'password' => bcrypt($req->password),
-            'level' => 1
-        ]);
+        $validate = User::insert($req);
 
         return $validate
             ? redirect('/admin')->with('success', 'user berhasil di tambahkan')

@@ -11,8 +11,8 @@ class UserController extends Controller
     public function updateUser(array $req, $id)
     {
         return User::where('id', $id)->update($req)
-            ? redirect('/admin')->with('pesan', 'sukses update user dengan id ' . $id)
-            : redirect('/admin')->with('pesan', 'gagal mengupdate data user');
+            ? redirect('/admin')->with('success', 'sukses update user dengan id ' . $id)
+            : redirect('/admin')->with('error', 'gagal mengupdate data user');
     }
 
     public function getUser()
@@ -23,11 +23,11 @@ class UserController extends Controller
     public function deleteUser($id)
     {
         return User::where('id', $id)->delete()
-            ? redirect('/admin')->with('pesan', 'sukses delete user dengan id ' . $id)
-            : redirect('/admin')->with('pesan', 'gagal delete data user');
+            ? redirect('/admin')->with('success', 'sukses delete user dengan id ' . $id)
+            : redirect('/admin')->with('error', 'gagal delete data user');
     }
 
-    public function getUdate($id)
+    public function getUpdate($id)
     {
         return response()->json([
             'data' => User::where('id', $id)->first()
