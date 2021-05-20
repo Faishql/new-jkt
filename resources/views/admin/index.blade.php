@@ -24,7 +24,7 @@
                                 <h3>Daftar User</h3>
                             </div>
                             <div class="" style="text-align: right; margin-top: -22px;">
-                                <button class="btn btn-success">Tambah</button>
+                                <a href="#modaltambah" role="button" class="btn btn-success" data-toggle="modal">Tambah</a>
                             </div>
                         </div>
                     </div>
@@ -50,9 +50,10 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td class="center">{{ $item->level === 1 ? 'petugas' : 'admin' }}</td>
-                                        <td><a class="btn btn-warning">Update</a></td>
+                                        <td><a href="#modaledit" role="button" class="btn btn-warning" data-toggle="modal"
+                                                data-id="{{ $item->id }}" id="modalUser">Edit</a></td>
                                         <td>
-                                            <form action="{{ route('deluser', ['id' => $item->id]) }}" method="POST">
+                                            <form action="{{ baseUrl() }}/admin/user/{{ $item->id }}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn btn-danger" type="submit">Delete</button>
@@ -73,5 +74,75 @@
     </div>
     <!--/.container-->
     </div>
+    <!-- Modal Tambah -->
+    <div id="modaltambah" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <form action="/admin/user" method="post">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Tambah User</h3>
+            </div>
+            <div class="modal-body">
+                @csrf
+                <div class="control-group">
+                    <label class="control-label" for="username">Username</label>
+                    <div class="controls">
+                        <input type="text" name="username" id="username" placeholder="" class="span5">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="email">Email</label>
+                    <div class="controls">
+                        <input type="text" name="email" id="email" placeholder="" class="span5">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="pw">Password</label>
+                    <div class="controls">
+                        <input type="password" name="password" id="pw" placeholder="" class="span5">
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                <button class="btn btn-success" type="submit">Tambah</button>
+            </div>
+        </form>
+    </div>
+    <!-- Akhir Modal Tambah -->
+    <!-- Modal Edit -->
+    <div id="modaledit" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <form action="" method="post" id="editUser">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Edit User</h3>
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <label class="control-label" for="username">Username</label>
+                    <div class="controls">
+                        <input type="text" id="username" placeholder="" class="span5">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="email">Email</label>
+                    <div class="controls">
+                        <input type="text" id="email" placeholder="" class="span5">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                <button class="btn btn-success" type="submit">Simpan</button>
+            </div>
+        </form>
+    </div>
+    <!-- Akhir Modal Edit -->
     <!--/.wrapper-->
+
+    <script>
+
+    </script>
 @endsection

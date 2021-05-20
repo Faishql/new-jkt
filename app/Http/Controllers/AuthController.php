@@ -57,10 +57,12 @@ class AuthController extends Controller
             'name' => $req->name,
             'email' => $req->email,
             'password' => bcrypt($req->password),
-            'level' => 2
+            'level' => 1
         ]);
 
-        return $validate ? response()->json(['pesan' => 'register sukses']) : response()->json(['pesan' => 'register gagal']);
+        return $validate
+            ? redirect('/admin')->with('success', 'user berhasil di tambahkan')
+            : redirect('/admin')->with('error', 'user gagal ditambahkan');
     }
 
     /**

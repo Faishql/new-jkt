@@ -1,17 +1,17 @@
-const modalBarang = document.getElementById("modal");
 const origin = document.getElementById("baseurl").value;
-const urlBarang = `${origin}/admin/barang/getup/`;
+const modalUser = document.getElementById("modalUser");
+const urlUser = `${origin}/admin/user/`;
 
-modalBarang.onclick(() => {
-    const id = document.getElementById("id_barang").value;
-    fetch(url + id)
+modalUser.onclick = function () {
+    const id = this.getAttribute("data-id");
+    console.log(id);
+    const form = document.getElementById("editUser");
+    form.action = `${origin}/user/${id}`;
+    fetch(urlUser + id)
         .then((res) => res.json())
         .then((res) => res.data)
         .then((res) => {
-            document.getElementsByName("namabarang").value = res.nama;
-            document.getElementsByName("satuan").value = res.satuan;
-            document.getElementsByName("kemasan").value = res.kemasan;
-            document.getElementsByName("jenis").value = res.jenis;
-            document.getElementsByName("harga").value = res.hrg_jual;
+            document.querySelector("input[name=username]").value = res.name;
+            document.querySelector("input[name=email]").value = res.email;
         });
-});
+};

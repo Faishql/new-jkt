@@ -26,4 +26,11 @@ class UserController extends Controller
             ? redirect('/admin')->with('pesan', 'sukses delete user dengan id ' . $id)
             : redirect('/admin')->with('pesan', 'gagal delete data user');
     }
+
+    public function getUdate($id)
+    {
+        return response()->json([
+            'data' => User::where('id', $id)->first()
+        ]);
+    }
 }

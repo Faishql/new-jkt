@@ -67,6 +67,7 @@ Route::prefix('/admin')->group(function () {
         Route::delete('/{id}', [IndexController::class, 'delUser'])->name('deluser');
         Route::post('/', [IndexController::class, 'addUser']);
         Route::put('/{id}', [IndexController::class, 'upUser']);
+        Route::get('/{id}', [IndexController::class, 'getIdu']);
     });
 
     // Routing actions barang

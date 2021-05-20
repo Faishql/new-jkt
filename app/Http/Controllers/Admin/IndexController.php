@@ -5,16 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\AuthController;
 
 class IndexController extends Controller
 {
-    private $user, $barang, $customer;
+    private $user, $barang, $customer, $auth;
 
     public function __construct()
     {
         $this->user = new UserController();
         $this->barang = new BarangController();
-        $this->customer = new CustomerController(); 
+        $this->customer = new CustomerController();
+        $this->auth = new AuthController();
     }
 
     /**
@@ -57,20 +59,30 @@ class IndexController extends Controller
         return $this->user->deleteUser($id);
     }
 
-    public function upUser(Request $req)
+    public function upUser(Request $req, $id)
     {
         (!isAdmin()) ? abort('401', 'cant access this page') : '';
         return $this->user->updateUser([
             'name' => $req->nama,
             'email' => $req->email
-        ], $req->id);
+        ], $id);
+    }
+
+    public function getIdu($id)
+    {
+        return $this->user->getUpdate($id);
+    }
+
+    public function addUser(Request $req)
+    {
+        return $this->auth->Register($req);
     }
 
     // ===================== end actions user ==================== //
 
     // ====================== actions barang ===================== //
 
-    public function upBarang(Request $req)
+    public function upBarang(Request $req, $id)
     {
         (!isAdmin()) ? abort('401', 'cant access this page') : '';
         return $this->barang->updateBarang([
@@ -79,7 +91,7 @@ class IndexController extends Controller
             'kemasan' => $req->kemasan,
             'jenis' => $req->jenis,
             'hrg_jual' => $req->harga
-        ], $req->id);
+        ], $id);
     }
 
     public function getIdb($id)
@@ -129,14 +141,14 @@ class IndexController extends Controller
     }
 
     /* function update data customer */
-    public function upCustomer(Request $req)
+    public function upCustomer(Request $req, $id)
     {
         (!isAdmin()) ? abort('401', 'cant access this page') : '';
         return $this->customer->updateCustomer([
             'nama' => $req->nama,
             'alamat' => $req->alamat,
             'no_telp' => $req->no
-        ], $req->id);
+        ], $id);
     }
 
     /* function delete data customer */
