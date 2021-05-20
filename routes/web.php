@@ -72,6 +72,7 @@ Route::prefix('/admin')->group(function () {
     // Routing actions barang
     Route::prefix('/barang')->group(function () {
         Route::get('/', [IndexController::class, 'barang']);
+        Route::get('/getup/{id}', [IndexController::class, 'getIdb']);
         Route::post('/', [IndexController::class, 'addBarang']);
         Route::put('/{id}', [IndexController::class, 'upBarang']);
         Route::delete('/{id}', [IndexController::class, 'delBarang']);
@@ -80,6 +81,7 @@ Route::prefix('/admin')->group(function () {
     // Routing actions customer
     Route::prefix('/customer')->group(function () {
         Route::get('/', [IndexController::class, 'customer']);
+        Route::get('/getup/{id}', [IndexController::class, 'getIdc']);
         Route::post('/', [IndexController::class, 'addCustomer']);
         Route::put('/{id}', [IndexController::class, 'upCustomer']);
         Route::delete('/{id}', [IndexController::class, 'delCustomer']);
