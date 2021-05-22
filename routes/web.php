@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ZakatController;
 use App\Http\Controllers\LimitController;
+use App\Http\Controllers\PenjualanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use League\CommonMark\Block\Element\IndentedCode;
@@ -86,5 +87,30 @@ Route::prefix('/admin')->group(function () {
         Route::post('/', [IndexController::class, 'addCustomer']);
         Route::put('/{id}', [IndexController::class, 'upCustomer']);
         Route::delete('/{id}', [IndexController::class, 'delCustomer']);
+    });
+});
+
+/*
+    ================================================================
+                          Router Penjualan
+    ================================================================
+*/
+
+Route::prefix('/penjualan')->group(function () {
+
+    Route::get('/', [PenjualanController::class, 'index']);
+
+    Route::prefix('/action')->group(function () {
+        Route::post('/add', [PenjualanController::class, 'addPenjualan']);
+        Route::post('/addDetail', [PenjualanController::class, 'addDetail']);
+    });
+
+    Route::prefix('/detail')->group(function () {
+        Route::get('/{inv}', [PenjualanController::class, 'getDetail']);
+    });
+
+    Route::prefix('/materi')->group(function () {
+        Route::get('/customer', [PenjualanController::class, 'getCustomer']);
+        Route::get('/barang', [PenjualanController::class, 'getBarang']);
     });
 });
