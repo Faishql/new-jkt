@@ -53,7 +53,14 @@
                                         <td class="center">{{ $item->no_telp }}</td>
                                         <td><a href="#modaledit" role="button" class="btn btn-warning modalCustomer"
                                                 data-id="{{ $item->id_customer }}" data-toggle="modal">Update</a></< /td>
-                                        <td><button class="btn btn-danger">Delete</button></td>
+                                        <td>
+                                            <form action="{{ baseUrl() }}/admin/customer/{{ $item->id_customer }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger" type="submit">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

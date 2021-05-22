@@ -237,5 +237,5 @@ async function getmodal5(kode) {
     document.getElementById("id05").style.display = "block";
     document.getElementById("idpe").value = kode;
     console.log(kode);
-    await displayDetail();
+    await displayDetail();  
 }
