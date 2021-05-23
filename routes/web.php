@@ -92,7 +92,7 @@ Route::prefix('/admin')->group(function () {
 
 /*
     ================================================================
-                          Router Penjualan
+                          Routing Penjualan
     ================================================================
 */
 
@@ -103,10 +103,12 @@ Route::prefix('/penjualan')->group(function () {
     Route::prefix('/action')->group(function () {
         Route::post('/add', [PenjualanController::class, 'addPenjualan']);
         Route::post('/addDetail', [PenjualanController::class, 'addDetail']);
+        Route::get('/getAll', [PenjualanController::class, 'getAll']);
     });
 
-    Route::prefix('/detail')->group(function () {
+    Route::prefix('/invoice')->group(function () {
         Route::get('/{inv}', [PenjualanController::class, 'getDetail']);
+        Route::get('/print/{inv}', [PenjualanController::class, 'printInv']);
     });
 
     Route::prefix('/materi')->group(function () {
