@@ -13,7 +13,7 @@
         </address>
         <table class="meta">
             <tr>
-                <th><span>Tuan</span></th>
+                <th><span>Pembeli</span></th>
                 <td><span>{{ $nama }}</span></td>
             </tr>
             <tr>
@@ -27,7 +27,7 @@
                     <th style="width: 10%"><span>JUMLAH</span></th>
                     <th style="width: 50%"><span>NAMA BARANG</span></th>
                     <th><span>HARGA</span></th>
-                    <th><span>JUMLAH</span></th>
+                    <th><span>SUB TOTAL</span></th>
                 </tr>
             </thead>
             <tbody>
