@@ -2,6 +2,7 @@ const URL_ORIGIN = document.getElementById("baseurl").value;
 const token = document.getElementById("token").value;
 const inv = "INV" + makeid(12);
 
+// function add penjualan global
 const addPenjualan = () => {
     const tgl = document.querySelector("input[name=tgl]").value;
     const customer = document.querySelector("select[name=customeradd]").value;

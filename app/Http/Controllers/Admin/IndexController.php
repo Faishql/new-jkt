@@ -111,6 +111,11 @@ class IndexController extends Controller
     public function addBarang(Request $req)
     {
         (!isAdmin()) ? abort('401', 'cant access this page') : '';
+
+        if (!$req->validate(['akemasan' => 'required|numeric'])) {
+            return redirect('/admin/barang');
+        }
+
         return $this->barang->addBarang([
             'nama' => $req->anama,
             'satuan' => $req->asatuan,

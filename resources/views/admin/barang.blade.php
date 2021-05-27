@@ -47,9 +47,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $no = 1;
+                                @endphp
                                 @foreach ($barang as $item)
                                     <tr class="odd gradeX">
-                                        <td>1</td>
+                                        <td>{{ $no++ }}</td>
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->satuan }}</td>
                                         <td>{{ $item->kemasan }}</td>

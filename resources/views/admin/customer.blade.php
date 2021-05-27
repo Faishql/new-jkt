@@ -45,9 +45,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $no = 1;
+                                @endphp
                                 @foreach ($customer as $item)
                                     <tr class="odd gradeX">
-                                        <td>1</td>
+                                        <td>{{ $no++ }}</td>
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->alamat }}</td>
                                         <td class="center">{{ $item->no_telp }}</td>
