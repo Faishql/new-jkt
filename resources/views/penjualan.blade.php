@@ -68,9 +68,6 @@
                                             <label><b>Jumlah</b></label>
                                             <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder=""
                                                 id="jumlah" name="jumlah" required>
-                                            <label><b>Total Harga</b></label>
-                                            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder=""
-                                                id="total_harga" name="tothar" required>
                                             <label><b>Tanggal Penjualan</b></label>
                                             <input class="w3-input w3-border w3-margin-bottom" type="date" name="tanggal"
                                                 required>

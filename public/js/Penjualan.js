@@ -22,14 +22,13 @@ const addPenjualan = () => {
         .then((res) => {
             getGlobal();
         })
-        .catch((err) => {});
+        .catch((err) => { });
 };
 
 // function add detail penjualan
 const addDetail = () => {
     const barang = document.querySelector("select[name=barang]").value;
     const jumlah = document.querySelector("input[name=jumlah]").value;
-    const tothar = document.querySelector("input[name=tothar]").value;
     const invo = document.getElementById("inv").value;
     const tgl = document.querySelector("input[name=tanggal]").value;
 
@@ -39,7 +38,6 @@ const addDetail = () => {
             barang: barang,
             customer: document.getElementById("customer").value,
             jumlah: jumlah,
-            tothar: tothar,
             inv: invo,
             tgl: tgl,
         }),
@@ -53,7 +51,7 @@ const addDetail = () => {
             getGlobal();
             document.getElementById("id03").style.display = "none";
         })
-        .catch((err) => {});
+        .catch((err) => { });
 };
 
 // function get detail penjualan
@@ -97,16 +95,17 @@ function makeid(length) {
 
 const getGlobal = async () => {
     let inner = "";
+    let no = 1;
     const process = await fetch(`${URL_ORIGIN}/penjualan/action/getAll`);
     const data = await process.json();
-    await data.data.forEach((res) => (inner += element(res)));
+    await data.data.forEach((res) => (inner += element(no++, res)));
     document.getElementById("list-data").innerHTML = inner;
 };
 
-const element = (res) => {
+const element = (no, res) => {
     return `
     <tr>
-        <td>01</td>
+        <td>${no}</td>
         <td>${res.invoice_penjualan}</td>
         <td>${res.total_harga}</td>
         <td>${res.tanggal_penjualan}</td>

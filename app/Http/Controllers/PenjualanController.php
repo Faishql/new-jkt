@@ -29,19 +29,21 @@ class PenjualanController extends Controller
 
     public function addDetail(Request $req)
     {
+        $tothar = Barang::select('hrg_jual')->where('id_barang', $req->barang)->first()['hrg_jual'];
+
         $insert = DPenjualan::insert([
             'invoice_penjualan' => $req->inv,
             'id_barang' => $req->barang,
             'id_customer' => $req->customer,
             'jumlah' => $req->jumlah,
-            'total_harga' => $req->tothar,
+            'total_harga' => $tothar * $req->jumlah,
             'tgl_detail' => $req->tgl,
             'tgl_data' => now()
         ]);
 
         if ($insert) {
             return Penjualan::where('invoice_penjualan', $req->inv)->update([
-                'total_harga' => Penjualan::select('total_harga')->where('invoice_penjualan', $req->inv)->first()['total_harga'] += $req->jumlah * $req->tothar
+                'total_harga' => Penjualan::select('total_harga')->where('invoice_penjualan', $req->inv)->first()['total_harga'] += $req->jumlah * $tothar
             ]) ? response()->json(['status' => 'ok']) : response()->json(['status' => 'no']);
         } else {
             return response()->json(['status' => 'no']);
@@ -55,7 +57,7 @@ class PenjualanController extends Controller
         foreach ($data as $item) {
             $final[] = [
                 'namab' => Barang::select('nama')->where('id_barang', $item->id_barang)->first()['nama'],
-                'namac' => Customer::select('nama')->where('id_customer', $item->id_customer)->first()['nama'],
+                'namac' => $item->id_customer === 0 ? "umum" : Customer::select('nama')->where('id_customer', $item->id_customer)->first()['nama'],
                 'jumlah' => $item->jumlah,
                 'harga' => $item->total_harga
             ];
