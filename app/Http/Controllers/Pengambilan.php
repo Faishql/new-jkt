@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 
 class Pengambilan extends Controller
 {
-
     private $excontrller;
 
     public function __construct()

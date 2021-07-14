@@ -61,7 +61,6 @@
                                     class="w3-button w3-xlarge w3-hover-red w3-display-topright"
                                     title="Close Modal">&times;</span>
                             </div>
-
                             <div class="w3-container">
                                 <form class="w3-container" action="">
                                     <div class="w3-section">
@@ -74,6 +73,21 @@
                                         <label><b>Jumlah</b></label>
                                         <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder=""
                                             id="jumlah" name="jumlah" required>
+                                <div class="w3-container">
+                                    <form class="w3-container" action="">
+                                        <div class="w3-section">
+                                            <input type="hidden" id="customer" value="">
+                                            <input type="hidden" id="inv" value="">
+                                            <label><b>Nama Barang</b></label>
+                                            <select class="w3-select w3-border w3-margin-bottom" id="barangSelect"
+                                                name="barang">
+                                            </select>
+                                            <label><b>Jumlah</b></label>
+                                            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder=""
+                                                id="jumlah" name="jumlah" required>
+                                            <label><b>Tanggal Penjualan</b></label>
+                                            <input class="w3-input w3-border w3-margin-bottom" type="date" name="tanggal"
+                                                required>
 
                                         <button class="button-text" type="button" onclick="addDetail()">Input</button>
                                         <button onclick="document.getElementById('id03').style.display='none'" type="button"

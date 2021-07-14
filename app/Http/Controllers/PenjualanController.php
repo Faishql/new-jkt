@@ -67,6 +67,9 @@ class PenjualanController extends Controller
             'sisa' => $req->jumlah,
             'total_harga' => $tothar * $req->jumlah,
             'tgl_detail' => now(),
+
+            'total_harga' => $tothar * $req->jumlah,
+            'tgl_detail' => $req->tgl,
             'tgl_data' => now()
         ]);
 
@@ -91,6 +94,7 @@ class PenjualanController extends Controller
                 'id_b' => $item->id_barang,
                 'inv_penjualan' => $item->invoice_penjualan,
                 'namab' => $barang['nama'],
+                'namab' => Barang::select('nama')->where('id_barang', $item->id_barang)->first()['nama'],
                 'namac' => $item->id_customer === 0 ? "umum" : Customer::select('nama')->where('id_customer', $item->id_customer)->first()['nama'],
                 'jumlah' => $item->jumlah,
                 'pcs' => $barang['hrg_jual'],
