@@ -35,7 +35,7 @@ function ele(res) {
     return `<option value="${res.kode_penerimaan}">${res.nama_gabah} - ${res.tanggal}</option>  `
 }
 
-document.getElementById('selep').addEventListener('click', async function() {
+document.getElementById('selep').addEventListener('click', async function () {
     try {
         this.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
         await addKering()
@@ -55,18 +55,18 @@ document.getElementById('modal').addEventListener('click', async function () {
 })
 
 function addKering() {
-    
+
     const kode = document.getElementById('selector').value
     const tgl = document.getElementById('tanggal').value
     const berat = document.getElementById('berat').value
-    
+
     fetch(`${url_origin}/gabah/giling`, {
         method: 'POST',
-        body: JSON.stringify({ kode: kode, tgl : tgl, berat: berat }),
+        body: JSON.stringify({ kode: kode, tgl: tgl, berat: berat }),
         headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token }
     })
-    .then(response => displayGiling())
-    .catch(err => console.log(err))
+        .then(response => displayGiling())
+        .catch(err => console.log(err))
 }
 
 async function getG() {
@@ -90,9 +90,15 @@ function elementGiling(res, no) {
             <td>${res.nama_gabah}</td>
             <td>${res.total_berat}</td>
             <td>${formatRupiah(res.total_bayar.toString(), 'Rp.')}</td>
-            <td>${res.tanggal}</td>
+            <td>${formatTanggal(res.tanggal)}</td>
         </tr>
     `
+}
+
+const formatTanggal = (tgl) => {
+    const listMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'November', 'Desember']
+    const month = tgl.split('-')
+    return `${month[2]}-${listMonth[parseInt(month[1]) - 1]}-${month[0]}`
 }
 
 displayGiling()

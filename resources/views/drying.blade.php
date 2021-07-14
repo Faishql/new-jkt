@@ -1,18 +1,20 @@
+<div class="container">
 @extends('layouts.app')
 @section('css-drying')
-    <link rel="stylesheet" href="{{ asset('css/drying.css')}}" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}" >
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 @endsection
 @section('content')
-<div class="form">
-  <div class="container-content">
-      <div class="content-header">   
+
+  <div class="wrapper">
+      <div class="header">   
           <h2>DATA PENJEMURAN</h2>
           <div class="header-icons">
-            <button class="icons-button" id="modal" onclick="document.getElementById('id01').style.display='block'"><img src="{{ asset('assets/sun.svg')}}" alt=""></button>
+            <button class="header-icons" id="modal" onclick="document.getElementById('id01').style.display='block'"><span class="material-icons-outlined">wb_sunny</span></button>
           </div>  
       </div>
-      <table>
+      <div class="content">
+        <table>
         <tr>
             <th>No</th>
             <th>Nama Pengirim</th>
@@ -24,8 +26,9 @@
           {{-- content --}}
         </tbody>
       </table>
-    </div>
-</div>
+      </div>
+      
+  </div>
 </div> 
 <div id="id01" class="w3-modal">
   <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
@@ -42,7 +45,7 @@
               <select class="w3-select w3-border w3-margin-bottom" id="selector" name="option">
                 
               </select>
-              <button class="button" type="button" id="tkering">Input</button>
+              <button class="button-text" type="button" id="tkering">Input</button>
               <button onclick="document.getElementById('id01').style.display='none'" type="button"
                   class="button-cancel">Cancel</button>
           </div>

@@ -65,7 +65,7 @@
                                 <a href="/admin/barang"><i class="menu-icon icon-inbox"></i>Barang</a>
                             </li>
                             <li>
-                                <a href="task.html"><i class="menu-icon icon-tasks"></i>....</a>
+                                <a href="/home"><i class="menu-icon icon-tasks"></i>Produksi</a>
                             </li>
                         </ul>
                     </div>

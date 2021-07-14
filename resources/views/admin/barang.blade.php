@@ -32,9 +32,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="module-body table">
+                    <div class="module-body table" style="overflow-x: auto;">
                         <table cellpadding="0" cellspacing="0" border="0"
-                            class="datatable-1 table table-bordered table-striped display" width="100%">
+                            class="table table-bordered table-striped display" width="100%">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -51,7 +51,7 @@
                                     $no = 1;
                                 @endphp
                                 @foreach ($barang as $item)
-                                    <tr class="odd gradeX">
+                                    <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->satuan }}</td>
@@ -171,12 +171,6 @@
                     <label class="control-label" for="harga">Harga Jual</label>
                     <div class="controls">
                         <input type="text" id="harga" name="aharga" placeholder="" class="span5">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="tgl">Tanggal</label>
-                    <div class="controls">
-                        <input type="date" id="tgl" name="date" placeholder="" class="span5">
                     </div>
                 </div>
             </div>

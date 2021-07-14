@@ -6,8 +6,8 @@ async function getData() {
     let no = 1
     const data = await get()
     console.log(data.data.length)
-    if (data.data.length == 0) { 
-        document.getElementById('list-data').innerHTML = 'data not found' 
+    if (data.data.length == 0) {
+        document.getElementById('list-data').innerHTML = 'data not found'
     } else {
         data.data.forEach(elements => elemen += element(no++, elements))
         document.getElementById('list-data').innerHTML = elemen
@@ -40,7 +40,7 @@ function element(no, data) {
         <td>${data.nama_gabah}</td>
         <td>${data.total_berat}</td>
         <td>${formatRupiah(data.total_bayar.toString(), 'Rp.')}</td>
-        <td>${data.tanggal}</td>
+        <td>${formatTanggal(data.tanggal)}</td>
     </tr>
     `
 }
@@ -54,4 +54,10 @@ async function get() {
 function getmodal(kode) {
     document.getElementById('id02').style.display = 'block'
     document.getElementById('kodepe').value = kode
+}
+
+const formatTanggal = (tgl) => {
+    const listMonth = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'November', 'Desember']
+    const month = tgl.split('-')
+    return `${month[2]}-${listMonth[parseInt(month[1]) - 1]}-${month[0]}`
 }

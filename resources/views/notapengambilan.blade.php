@@ -2,14 +2,14 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>INVOICE</title>
-    <link rel="stylesheet" href="{{ asset('css/invpenjualan.css') }}" />
+    <title>Nota Pengambilan</title>
+    <link rel="stylesheet" href="{{ asset('css/notapengambilan.css') }}" />
 </head>
 
 <body>
     <div class="navigation">
         <div class="tombol">
-            <div class="tombol1"><a href="/penjualan" class="my-button">Kembali</a></div>
+            <div class="tombol1"><a href="/pengambilan" class="my-button">Kembali</a></div>
             <div class="tombol1" style="margin-right: 0"><button id="btn-cetak">Cetak</button></div>
         </div>
     </div>
@@ -18,7 +18,7 @@
         <div class="wrapper">
             <article>
                 <address>
-                    <p>INVOICE : {{ $inv }}</p>
+                    <p>INVOICE : {{ $invoice }}</p>
                 </address>
                 <table class="meta">
                     <tr>
@@ -33,21 +33,21 @@
                 <table class="inventory">
                     <thead>
                         <tr>
-                            <th style="width: 10%"><span>JUMLAH</span></th>
-                            <th style="width: 40%"><span>NAMA BARANG</span></th>
-                            <th><span>HARGA / PCS</span></th>
-                            <th><span>HARGA</span></th>
-                            <th><span>SUB TOTAL</span></th>
+                            <th style="width: 20%"><span>INVOICE</span></th>
+                            <th style="width: 30%"><span>NAMA BARANG</span></th>
+                            <th><span>HARGA BARANG</span></th>
+                            <th><span>JUMLAH PENGAMBILAN</span></th>
+                            <th><span>SISA BARANG</span></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($list as $item)
                             <tr>
-                                <td><span>{{ $item['banyak_barang'] }}</span></td>
-                                <td><span>{{ $item['nama_barang'] }}</span></td>
-                                <td><span>{{ rupiah($item['pcs']) }}</span></td>
+                                <td><span>{{ $item['inv'] }}</span></td>
+                                <td><span>{{ $item['namab'] }}</span></td>
                                 <td><span>{{ rupiah($item['harga']) }}</span></td>
-                                <td><span>{{ rupiah($item['jumlah']) }}</span></td>
+                                <td><span>{{ $item['jumlah'] }}</span></td>
+                                <td><span>{{ $item['sisa'] === 0 ? 'habis' : $item['sisa'] }}</span></td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -62,11 +62,12 @@
             <aside>
                 <h1><span>Catatan Tambahan</span></h1>
                 <div contenteditable>
-                    <p>Tulis catatan tambahan disini</p>
+                    <p>Perhatian mohon untuk segera menyetak nota pengambilan barang karena nota hanya akan di cetak
+                        satu
+                        kali!</p>
                 </div>
             </aside>
         </div>
-
     </div>
     <script src="{{ asset('js/cpenjualan.js') }}"></script>
 </body>

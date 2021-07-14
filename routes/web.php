@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ZakatController;
 use App\Http\Controllers\LimitController;
+use App\Http\Controllers\Pengambilan;
 use App\Http\Controllers\PenjualanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -112,7 +113,28 @@ Route::prefix('/penjualan')->group(function () {
     });
 
     Route::prefix('/materi')->group(function () {
+        Route::post('/add/customer', [PenjualanController::class, 'addCustomer']);
         Route::get('/customer', [PenjualanController::class, 'getCustomer']);
         Route::get('/barang', [PenjualanController::class, 'getBarang']);
+    });
+});
+
+/*
+    ================================================================
+                          Routing Pengambilan
+    ================================================================
+*/
+
+Route::prefix('/pengambilan')->group(function () {
+
+    Route::get('/', [Pengambilan::class, 'index']);
+    Route::get('/allpenjualan', [Pengambilan::class, 'allPenjualan']);
+
+    Route::prefix('/action')->group(function () {
+        Route::get('/add/{inv}', [Pengambilan::class, 'addPengambilan']);
+        Route::post('/update', [Pengambilan::class, 'savePengambilan']);
+        Route::post('/temp', [Pengambilan::class, 'saveTemp']);
+        Route::get('/get/{id}', [Pengambilan::class, 'getJumlah']);
+        Route::post('/saveTemp', [Pengambilan::class, 'saveTemp']);
     });
 });

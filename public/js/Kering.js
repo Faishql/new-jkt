@@ -16,11 +16,10 @@ function ele(res) {
     return `<option value="${res.kode_penerimaan}">${res.nama_gabah} - ${res.tanggal}</option>  `
 }
 
-document.getElementById('tkering').addEventListener('click', async function() {
+document.getElementById('tkering').addEventListener('click', async function () {
     try {
         this.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading'
         await addKering()
-        console.log(document.getElementById('selector').value)
     } catch (error) {
         console.log(error)
     } finally {
@@ -31,20 +30,19 @@ document.getElementById('tkering').addEventListener('click', async function() {
     }
 })
 
-document.getElementById('modal').addEventListener('click', async function () {
-    await display()
-})
+document.getElementById('modal')
+    .addEventListener('click', async function () {
+        await display()
+    })
 
 function addKering() {
-    
+
     const kode = document.getElementById('selector').value
     const tgl = document.getElementById('tanggal').value
-    
+
     fetch(`${url_origin}/gabah/kering`, {
         method: 'POST',
-        body: JSON.stringify({ kode: kode, tgl : tgl }),
+        body: JSON.stringify({ kode: kode, tgl: tgl }),
         headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': token }
-    })
-    .then(response => getData())
-    .catch(err => console.log(err))
+    }).then(response => getData()).catch(err => console.log(err))
 }
