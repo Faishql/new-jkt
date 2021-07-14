@@ -10,9 +10,7 @@
     @yield('css-add')
     @yield('css-drying')
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
 
 <body>
@@ -32,22 +30,15 @@
             </div>
 
         </div>
-        <li class="list"><a title="Home" href="{{ url('/home') }}"><span
-                    class="material-icons-outlined">grid_view</span></a></li>
-        <li class="list"><a title="Penjualan" class="{{ request()->is('home') ? 'active' : null }}"
-                href="{{ url('/home') }}"><span class="material-icons-outlined">paid</span></a></li>
-        <li class="list"><a title="Gabah Kering" class="{{ request()->is('gabah/kering') ? 'active' : '' }}"
-                href="/gabah/kering"><span class="material-icons-outlined">wb_sunny</span></a></li>
-        <li class="list"><a title="Penggilingan" class="{{ request()->is('gabah/giling') ? 'active' : '' }}"
-                href="/gabah/giling"><span class="material-icons">timer</span></a></li>
+        <li class="list"><a title="Home" href="{{ url('/home') }}"><span class="material-icons-outlined">grid_view</span></a></li>
+        <li class="list"><a title="Penjualan" class="{{ request()->is('home') ? 'active' : null }}" href="{{ url('/home') }}"><span class="material-icons-outlined">paid</span></a></li>
+        <li class="list"><a title="Gabah Kering" class="{{ request()->is('gabah/kering') ? 'active' : '' }}" href="/gabah/kering"><span class="material-icons-outlined">wb_sunny</span></a></li>
+        <li class="list"><a title="Penggilingan" class="{{ request()->is('gabah/giling') ? 'active' : '' }}" href="/gabah/giling"><span class="material-icons">timer</span></a></li>
         <!-- <li><a class="add {{ request()->is('gabah/add') ? 'active' : '' }}" href="/gabah/add"><img src="{{ asset('assets/plus.svg') }}"></a></li> -->
-        <li class="list"><a title="Penjualan" class="{{ request()->is('penjualan') ? 'active' : '' }}"
-                href="/penjualan"><span class="material-icons">storefront</span></a></li>
-        <li class="list"><a title="Pengambilan" class="{{ request()->is('pengambilan') ? 'active' : '' }}"
-                href="/pengambilan"><span class="material-icons-outlined">delivery_dining</span></a></li>
+        <li class="list"><a title="Penjualan" class="{{ request()->is('penjualan') ? 'active' : '' }}" href="/penjualan"><span class="material-icons">storefront</span></a></li>
+        <li class="list"><a title="Pengambilan" class="{{ request()->is('pengambilan') ? 'active' : '' }}" href="/pengambilan"><span class="material-icons-outlined">delivery_dining</span></a></li>
         <li class="list"><a title="Link To Admin" href="/admin"><span class="material-icons">link</span></a></li>
-        <li class="list"><a title="Logout" class="add {{ request()->is('gabah/add') ? 'active' : '' }}"
-                href="/logout"><span class="material-icons">logout</span></a></li>
+        <li class="list"><a title="Logout" class="add {{ request()->is('gabah/add') ? 'active' : '' }}" id="logout" href="/logout"><span class="material-icons">logout</span></a></li>
     </ul>
 
     <script src="{{ asset('js/log.js') }}"></script>

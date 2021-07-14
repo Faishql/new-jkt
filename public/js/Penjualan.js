@@ -163,7 +163,7 @@ const elementCustomer = res => {
 };
 
 const modalGlobal = async () => {
-    document.getElementById('id02').style.display = 'block';
+    document.getElementById('id00').style.display = 'block';
     await selectCustomer();
 };
 
