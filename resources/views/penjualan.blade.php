@@ -77,27 +77,7 @@
             </div>
         </div>
     </div>
-    <div id="id04" class="w3-modal">
-        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
-            <div class="w3-center"><br>
-                <span onclick="document.getElementById('id04').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-            </div>
-            <div class="w3-container">
-                <form class="w3-container" action="">
-                    <div class="w3-section">
-                        <label><b>Nama</b></label>
-                        <input class="w3-input w3-border w3-margin-bottom" type="text" id="nama" required>
-                        <label><b>Alamat</b></label>
-                        <input class="w3-input w3-border w3-margin-bottom" type="text" id="alamat" required>
-                        <label><b>No Telp</b></label>
-                        <input class="w3-input w3-border w3-margin-bottom" type="text" id="no_telp" required>
-                        <button class="button-text" type="button" onclick="addCustomer()">Tambah</button>
-                        <button onclick="document.getElementById('id04').style.display='none'" type="button" class="button-cancel">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
     <div id="id00" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
             <div class="w3-center"><br>
@@ -117,8 +97,30 @@
                         <button onclick="document.getElementById('id02').style.display='none'" type="button" class="button-cancel">Cancel</button>
                     </div>
                 </form>
+                <div id="id04" class="w3-modal">
+                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+                        <div class="w3-center"><br>
+                            <span onclick="document.getElementById('id04').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                        </div>
+                        <div class="w3-container">
+                            <form class="w3-container" action="">
+                                <div class="w3-section">
+                                    <label><b>Nama</b></label>
+                                    <input class="w3-input w3-border w3-margin-bottom" type="text" id="nama" required>
+                                    <label><b>Alamat</b></label>
+                                    <input class="w3-input w3-border w3-margin-bottom" type="text" id="alamat" required>
+                                    <label><b>No Telp</b></label>
+                                    <input class="w3-input w3-border w3-margin-bottom" type="text" id="no_telp" required>
+                                    <button class="button-text" type="button" onclick="addCustomer()">Tambah</button>
+                                    <button onclick="document.getElementById('id04').style.display='none'" type="button" class="button-cancel">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 
     <script src="{{ asset('js/Penjualan.js') }}"></script>
